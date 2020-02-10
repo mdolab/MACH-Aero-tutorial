@@ -20,10 +20,10 @@ For more details on the options in pyGeo see the `docs <http://mdolab.engin.umic
 Files
 ================================================================================
 Navigate to the directory ``aero/geometry`` in your tutorial folder.
-Copy the following files from the MACHtutorial repository:
+Copy the following files from the MACH_Aero_Tutorials repository:
 ::
 
-    $ cp MACHtutorial/tutorial/aero/geometry/rae2822.dat .
+    $ cp MACH_Aero_Tutorials/tutorial/aero/geometry/rae2822.dat .
 
 Create the following empty runscript in the current directory:
 

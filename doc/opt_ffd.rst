@@ -28,15 +28,15 @@ Before diving into the parametrization, however, we need to generate an FFD, whi
 Files
 ================================================================================
 Navigate to the directory ``opt/ffd`` in your tutorial folder.
-Copy the following files from the MACHtutorial repository:
+Copy the following files from the MACH_Aero_Tutorials repository:
 ::
 
-    $ cp MACHtutorial/tutorial/opt/ffd/simple_ffd.py .
+    $ cp MACH_Aero_Tutorials/tutorial/opt/ffd/simple_ffd.py .
 
-Also copy the volume mesh from the MACHtutorial repository:
+Also copy the volume mesh from the MACH_Aero_Tutorials repository:
 ::
 
-    $ cp MACHtutorial/tutorial/aero/analysis/wing_vol.cgns .
+    $ cp MACH_Aero_Tutorials/tutorial/aero/analysis/wing_vol.cgns .
 
 Create the following empty runscript in the current directory:
 

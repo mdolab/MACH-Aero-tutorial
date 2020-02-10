@@ -25,11 +25,11 @@ The optimization problem is defined as
 Files
 ================================================================================
 Navigate to the directory ``opt/aero`` in your tutorial folder.
-Copy the following files from the MACHtutorial repository:
+Copy the following files from the MACH_Aero_Tutorials repository:
 ::
 
-    $ cp MACHtutorial/tutorial/opt/ffd/ffd.xyz .
-    $ cp MACHtutorial/tutorial/aero/meshing/volume/wing_vol.cgns .
+    $ cp MACH_Aero_Tutorials/tutorial/opt/ffd/ffd.xyz .
+    $ cp MACH_Aero_Tutorials/tutorial/aero/meshing/volume/wing_vol.cgns .
 
 Create the following empty runscript in the current directory:
 

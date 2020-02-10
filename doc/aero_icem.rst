@@ -477,7 +477,7 @@ The window is shown below.
 
 The surface mesh is now ready for use in pyHyp.
 To proceed to the next tutorial (volume meshing with pyHyp), reduce the number of nodes specified for the edges so far (e.g., 17 to 5, and 161 to 41), and convert and export the mesh again.
-Or use the ``wing.cgns`` file provided in ``MACHtutorial/tutorial/aero/meshing/surface``.
+Or use the ``wing.cgns`` file provided in ``MACH_Aero_Tutorials/tutorial/aero/meshing/surface``.
 This should reduce computational time and the probability of pyHyp failing with the default options provided in the following tutorial and the mesh generated so far.
 
 .. centered::

@@ -79,6 +79,7 @@ Run it yourself!
 The script can be run in the same way.
 ::
 
+	$ mkdir output
 	$ mpirun -np 4 python airfoil_multiopt.py | tee output.txt
 
 

@@ -211,6 +211,7 @@ Run it yourself!
 To run the script, use the ``mpirun`` and place the total number of processors after the ``-np`` argument.
 ::
 
+	$ mkdir output
 	$ mpirun -np 4 python airfoil_opt.py | tee output.txt
 
 The command ``tee`` saves the text outputs of the optimization to the specified text file. You can follow the progress of the optimization using OptView, as explained in pyOptSparse.

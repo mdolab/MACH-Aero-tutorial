@@ -8,9 +8,8 @@ from baseclasses import *
 from adflow import ADFLOW
 from pygeo import *
 from pyspline import *
-from repostate import *
 from pyoptsparse import Optimization, OPT
-from pywarp import *
+from idwarp import *
 from multipoint import *
 #rst Imports (end)
 # ======================================================================
@@ -161,9 +160,9 @@ if comm.rank == 0:
 #         Mesh Warping Set-up
 # ======================================================================
 #rst warp (beg)
-meshOptions = {'gridFile':'n0012.cgns', 'warpType':'algebraic',}
+meshOptions = {'gridFile':'n0012.cgns'}
 
-mesh = MBMesh(options=meshOptions, comm=comm)
+mesh = USMesh(options=meshOptions, comm=comm)
 CFDSolver.setMesh(mesh)
 #rst warp (end)
 # ======================================================================

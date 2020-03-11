@@ -175,7 +175,7 @@ if comm.rank == 0:
 #         Mesh Warping Set-up
 # ======================================================================
 #rst warp (beg)
-meshOptions = {'gridFile':'n0012.cgns', 'warpType':'algebraic',}
+meshOptions = {'gridFile':'n0012.cgns'}
 
 mesh = USMesh(options=meshOptions, comm=comm)
 CFDSolver.setMesh(mesh)

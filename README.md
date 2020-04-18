@@ -6,7 +6,7 @@ The tutorial covers the basics needed to optimize the aerodynamic surface of a w
 It also includes an airfoil optimization example.
 
 ## Tutorial documentation
-You can either view the [online tutorial](http://mdolab.engin.umich.edu/docs/packages/mach_aero_tutorials/doc/index.html) or build the tutorial documentation locally.
+You can either view the [online tutorial](https://mdolab-mach-aero-tutorial.readthedocs-hosted.com) or build the tutorial documentation locally.
 To generate the tutorial locally, open a terminal and enter the following commands:
 
     $ cd mach_aero_tutorials/doc

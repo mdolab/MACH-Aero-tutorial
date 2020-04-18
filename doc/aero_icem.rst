@@ -14,6 +14,8 @@ The objective of this section is to familiarize the user with the ICEM CFD softw
 ICEM CFD is a meshing software with advanced CAD/geometry readers and repairs tools.
 It allows the user to produce volume or surface meshes.
 At times ICEM may test your patience, however, it offers a lot of functionality and is quite handy once you get to know its quirks.
+A full ICEM CFD tutorial can be found `here <https://engineering.purdue.edu/~scalo/menu/teaching/me608/tutorial.pdf>`_.
+For more theoretical background of mesh generation, refer to "Thompson, et.al. Handbook of grid generation. CRC press, 1998."
 
 .. warning:: Make sure you save your work often when using ICEM. It is known to crash at the worst possible moments. We also recommend saving instances of a single project in different locations just in case you need to go back to a previous state.
 

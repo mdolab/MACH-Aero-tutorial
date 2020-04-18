@@ -1,4 +1,6 @@
 # MACH-Aero Tutorials
+[![Documentation Status](https://readthedocs.com/projects/mdolab-mach-aero-tutorial/badge/?version=latest)](https://mdolab-mach-aero-tutorial.readthedocs-hosted.com/en/latest/?badge=latest)
+
 This repository contains step-by-step tutorials for MDO of aircraft configurations with high fidelity (MACH).
 The MACH framework is developed by the [MDO Lab](http://mdolab.engin.umich.edu).
 It facilitates the aerodynamic design, analysis, and optimization of aircraft.

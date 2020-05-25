@@ -2,7 +2,7 @@
 #         Import modules
 # ======================================================================
 # rst Imports (beg)
-import numpy as np
+import np as np
 from mpi4py import MPI
 from baseclasses import AeroProblem
 from adflow import ADFLOW
@@ -25,7 +25,7 @@ mycl = [0.5, 0.5]
 nFlowCases = len(mach)
 # assign number of processors
 nGroup = 1
-nProcPerGroup = 4
+nProcPerGroup = MPI.COMM_WORLD.size
 # rst parameters (end)
 # ======================================================================
 #         Create multipoint communication object

@@ -1,5 +1,5 @@
 # rst Imports
-import numpy
+import numpy as np
 from adflow import ADFLOW
 from baseclasses import AeroProblem
 from mpi4py import MPI
@@ -38,7 +38,7 @@ CFDSolver = ADFLOW(options=aeroOptions)
 
 # Add features
 CFDSolver.addLiftDistribution(150, "z")
-CFDSolver.addSlices("z", numpy.linspace(0.1, 14, 10))
+CFDSolver.addSlices("z", np.linspace(0.1, 14, 10))
 
 # rst Create AeroProblem
 ap = AeroProblem(name="wing", mach=0.8, altitude=10000, alpha=1.5, areaRef=45.5, chordRef=3.25, evalFuncs=["cl", "cd"])
@@ -47,7 +47,7 @@ ap = AeroProblem(name="wing", mach=0.8, altitude=10000, alpha=1.5, areaRef=45.5,
 
 # Create an array of alpha values.
 # In this case we create 6 evenly spaced values from 0 - 5.
-alphaList = numpy.linspace(0, 5, 6)
+alphaList = np.linspace(0, 5, 6)
 
 # Create storage for the evaluated lift and drag coefficients
 CL = []

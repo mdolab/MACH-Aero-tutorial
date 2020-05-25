@@ -16,7 +16,7 @@ from multipoint import multiPointSparse
 # ======================================================================
 # rst multipoint (beg)
 MP = multiPointSparse(MPI.COMM_WORLD)
-MP.addProcessorSet("cruise", nMembers=1, memberSizes=4)
+MP.addProcessorSet("cruise", nMembers=1, memberSizes=MPI.COMM_WORLD.size)
 comm, setComm, setFlags, groupFlags, ptID = MP.createCommunicators()
 # rst multipoint (end)
 # ======================================================================
@@ -36,14 +36,11 @@ aeroOptions = {
     "smoother": "dadi",
     "CFL": 1.5,
     "CFLCoarse": 1.25,
-    "MGCycle": "3w",
+    "MGCycle": "sg",
     "MGStartLevel": -1,
     "nCyclesCoarse": 250,
     # ANK Solver Parameters
     "useANKSolver": True,
-    "ankswitchtol": 1e-1,
-    "anksecondordswitchtol": 1e-2,
-    "ankcoupledswitchtol": 1e-5,
     # NK Solver Parameters
     "useNKSolver": True,
     "nkswitchtol": 1e-6,

@@ -1,4 +1,4 @@
-import numpy
+import numpy as np
 
 # rst Dimensions
 # Bounding box for root airfoil
@@ -17,27 +17,27 @@ nY = 2  # perpendicular to wing planform
 nZ = 8  # spanwise
 # rst Compute
 # Compute grid points
-span_dist = numpy.linspace(0, 1, nZ) ** 0.8
+span_dist = np.linspace(0, 1, nZ) ** 0.8
 z_sections = span_dist * (z_tip - z_root) + z_root
 
 x_te = span_dist * (x_tip_range[0] - x_root_range[0]) + x_root_range[0]
 x_le = span_dist * (x_tip_range[1] - x_root_range[1]) + x_root_range[1]
-y_coords = numpy.vstack(
+y_coords = np.vstack(
     (
         span_dist * (y_tip_range[0] - y_root_range[0]) + y_root_range[0],
         span_dist * (y_tip_range[1] - y_root_range[1]) + y_root_range[1],
     )
 )
 
-X = numpy.zeros((nY * nZ, nX))
-Y = numpy.zeros((nY * nZ, nX))
-Z = numpy.zeros((nY * nZ, nX))
+X = np.zeros((nY * nZ, nX))
+Y = np.zeros((nY * nZ, nX))
+Z = np.zeros((nY * nZ, nX))
 row = 0
 for k in range(nZ):
     for j in range(nY):
-        X[row, :] = numpy.linspace(x_te[k], x_le[k], nX)
-        Y[row, :] = numpy.ones(nX) * y_coords[j, k]
-        Z[row, :] = numpy.ones(nX) * z_sections[k]
+        X[row, :] = np.linspace(x_te[k], x_le[k], nX)
+        Y[row, :] = np.ones(nX) * y_coords[j, k]
+        Z[row, :] = np.ones(nX) * z_sections[k]
         row += 1
 # rst Write
 # Write FFD to file

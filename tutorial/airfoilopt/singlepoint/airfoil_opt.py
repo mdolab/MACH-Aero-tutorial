@@ -2,7 +2,7 @@
 #         Import modules
 # ======================================================================
 # rst Imports (beg)
-import numpy as np
+import np as np
 from mpi4py import MPI
 from baseclasses import AeroProblem
 from adflow import ADFLOW
@@ -30,7 +30,7 @@ alt = 10000
 # ======================================================================
 # rst multipoint (beg)
 MP = multiPointSparse(MPI.COMM_WORLD)
-MP.addProcessorSet("cruise", nMembers=1, memberSizes=4)
+MP.addProcessorSet("cruise", nMembers=1, memberSizes=MPI.COMM_WORLD.size)
 comm, setComm, setFlags, groupFlags, ptID = MP.createCommunicators()
 # rst multipoint (end)
 # ======================================================================

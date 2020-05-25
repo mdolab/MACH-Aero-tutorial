@@ -1,5 +1,5 @@
 # rst Imports
-import numpy
+import numpy as np
 from pygeo import pyGeo
 
 # rst Airfoil file
@@ -11,7 +11,7 @@ naf = len(airfoil_list)  # number of airfoils
 x = [0.0, 7.5]
 y = [0.0, 0.0]
 z = [0.0, 14.0]
-offset = numpy.zeros((naf, 2))  # x-y offset applied to airfoil position before scaling
+offset = np.zeros((naf, 2))  # x-y offset applied to airfoil position before scaling
 
 # Airfoil rotations
 rot_x = [0.0, 0.0]

@@ -1,5 +1,5 @@
 # rst Import libraries
-import numpy
+import numpy as np
 from pygeo import DVGeometry
 from idwarp import USMesh
 
@@ -53,9 +53,9 @@ DVGeo.addPointSet(coords, "coords")
 
 # rst Change dvs
 dvDict = DVGeo.getValues()
-dvDict["twist"] = numpy.linspace(0, 50, nRefAxPts)[1:]
-dvDict["dihedral"] = numpy.linspace(0, 3, nRefAxPts)[1:]
-dvDict["taper"] = numpy.array([1.2, 0.5])
+dvDict["twist"] = np.linspace(0, 50, nRefAxPts)[1:]
+dvDict["dihedral"] = np.linspace(0, 3, nRefAxPts)[1:]
+dvDict["taper"] = np.array([1.2, 0.5])
 dvDict["slocal"][::5] = 0.5
 DVGeo.setDesignVars(dvDict)
 

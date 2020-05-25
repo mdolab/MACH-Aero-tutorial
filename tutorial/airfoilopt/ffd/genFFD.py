@@ -1,7 +1,7 @@
 # this script is used to generate x-uniform FFD boxes for a given airfoil
 
 # rst Import
-import numpy as np
+import np as np
 
 # rst Load
 airfoil = np.loadtxt("n0012.dat")

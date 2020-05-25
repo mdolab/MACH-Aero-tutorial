@@ -9,7 +9,7 @@ pyOptSparse
 ***********
 
 Introduction
-================================================================================
+============
 Although we specialize in optimization, we don't write our own optimization algorithms.
 We like to work a little closer to the applications side, and we figure that the mathematicians have already done an exceptional job developing the algorithms.
 In fact, there are many great optimization algorithms out there, each with different advantages.
@@ -21,14 +21,14 @@ In this section, we will go over the basic pyOptSparse optimization script and t
 
 
 Files
-================================================================================
+=====
 Navigate to the directory ``opt/pyoptsparse`` in your tutorial folder.
 Create the following empty runscript in the current directory:
 
 - ``rosenbrock.py``
 
 Optimization Problem Definition
-================================================================================
+===============================
 We will be solving a constrained Rosenbrock problem defined in the following manner:
 
 | *minimize*
@@ -39,7 +39,7 @@ We will be solving a constrained Rosenbrock problem defined in the following man
 |    :math:`0.1 - (x_0 - 1)^3 - (x_1 - 1) \le 0`
 
 Dissecting the pyOptSparse runscript
-================================================================================
+====================================
 Open the file ``rosenbrock.py`` in your favorite text editor.
 Then copy the code from each of the following sections into this file.
 

@@ -54,7 +54,7 @@ ADflow options
    :start-after: # rst ADflow options
    :end-before: # rst Start ADflow
 
-An exhaustive list of the ADflow options and their descriptions can be found in the `docs <http://mdolab.engin.umich.edu/docs/packages/adflow/doc/options.html>`_.
+An exhaustive list of the ADflow options and their descriptions can be found in the `docs <https://mdolab-adflow.readthedocs-hosted.com/en/latest/options.html>`_.
 We will not go over every option here, as they are outlined in the previous example.
 However, we will highlight the option that has been changed for this case.
 This option is the "infchangecorrection" option.

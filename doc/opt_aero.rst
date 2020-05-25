@@ -102,7 +102,7 @@ For the volume constraint, the 2D grid is transformed into a 3D grid bounded by 
 The volume is computed by adding up the volumes of the cells that make up the 3D grid.
 For the thickness constraints, the nodes of the 2D grid are projected to the upper and lower surface of the wing
 The thickness for a given node is the difference between its upper and lower projections.
-More information on the options can be found in the `pyGeo docs <http://mdolab.engin.umich.edu/docs/packages/pygeo/doc/index.html>`_ or by looking at the pyGeo source code.
+More information on the options can be found in the `pyGeo docs <https://mdolab-pygeo.readthedocs-hosted.com/>`_ or by looking at the pyGeo source code.
 
 The LeTe constraints (short for Leading edge/Trailing edge) are linear constraints based on the FFD control points.
 When we have both twist and local shape variables, we want to prevent the local shape variables from creating a shearing twist.

@@ -236,15 +236,21 @@ optProb.printSparsity()
 # rst optprob (end)
 # rst optimizer
 # Set up optimizer
-optOptions = {
-    "Major iterations limit": 200,
-    "Major step limit": 2.0,
-    "Major feasibility tolerance": 1e-6,
-    "Major optimality tolerance": 1e-6,
-    "Print file": os.path.join(outputDirectory, "SNOPT_print.out"),
-    "Summary file": os.path.join(outputDirectory, "SNOPT_summary.out"),
-}
-opt = OPT("snopt", options=optOptions)
+optimizer = "SLSQP"
+if optimizer == "SLSQP":
+    optOptions = {"IFILE": os.path.join(outputDirectory, "SLSQP.out")}
+    opt = OPT("slsqp", options=optOptions)
+elif optimizer == "SNOPT":
+    optOptions = {
+        "Major feasibility tolerance": 1e-4,
+        "Major optimality tolerance": 1e-4,
+        "Difference interval": 1e-3,
+        "Hessian full memory": None,
+        "Function precision": 1e-8,
+        "Print file": os.path.join(outputDirectory, "SNOPT_print.out"),
+        "Summary file": os.path.join(outputDirectory, "SNOPT_summary.out"),
+    }
+    opt = OPT("snopt", options=optOptions)
 
 # Run Optimization
 sol = opt(optProb, MP.sens, storeHistory=os.path.join(outputDirectory, "opt.hst"))

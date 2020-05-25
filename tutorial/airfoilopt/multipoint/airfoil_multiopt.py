@@ -2,7 +2,8 @@
 #         Import modules
 # ======================================================================
 # rst Imports (beg)
-import np as np
+import os
+import numpy as np
 from mpi4py import MPI
 from baseclasses import AeroProblem
 from adflow import ADFLOW
@@ -34,6 +35,9 @@ nProcPerGroup = MPI.COMM_WORLD.size
 MP = multiPointSparse(MPI.COMM_WORLD)
 MP.addProcessorSet("cruise", nMembers=nGroup, memberSizes=nProcPerGroup)
 comm, setComm, setFlags, groupFlags, ptID = MP.createCommunicators()
+outputDirectory = "output"
+if comm.rank == 0:
+    os.mkdir(outputDirectory)
 # rst multipoint (end)
 # ======================================================================
 #         ADflow Set-up
@@ -42,44 +46,35 @@ comm, setComm, setFlags, groupFlags, ptID = MP.createCommunicators()
 aeroOptions = {
     # Common Parameters
     "gridFile": "n0012.cgns",
-    "outputDirectory": "output",
+    "outputDirectory": outputDirectory,
     # Physics Parameters
     "equationType": "RANS",
-    # 'smoother':'dadi',
-    "smoother": "runge kutta",
-    "rkreset": True,
-    "nrkreset": 200,
-    "CFL": 0.8,
-    "CFLCoarse": 0.4,
+    "smoother": "dadi",
     "MGCycle": "sg",
-    "MGStartLevel": -1,
-    "nCyclesCoarse": 2500,
     "nCycles": 20000,
     "monitorvariables": ["resrho", "cl", "cd", "cmz", "yplus"],
     "useNKSolver": True,
     "useanksolver": True,
     "nsubiterturb": 10,
     "liftIndex": 2,
+    "infchangecorrection": True,
     # Convergence Parameters
     "L2Convergence": 1e-15,
     "L2ConvergenceCoarse": 1e-4,
     # Adjoint Parameters
-    "adjointSolver": "gmres",  # gmres,tfqmr,rechardson,bcgs,ibcgs
+    "adjointSolver": "gmres",
     "adjointL2Convergence": 1e-12,
     "ADPC": True,
-    # 'ADPC':False,
     "adjointMaxIter": 5000,
     "adjointSubspaceSize": 400,
     "ILUFill": 3,
-    # 'ILUFill':2,
     "ASMOverlap": 3,
     "outerPreconIts": 3,
-    # 'innerPreconIts':2,
     "NKSubSpaceSize": 400,
     "NKASMOverlap": 4,
     "NKPCILUFill": 4,
     "NKJacobianLag": 5,
-    "nkswitchtol": 1e-6,  # 2e-4,
+    "nkswitchtol": 1e-6,
     "nkouterpreconits": 3,
     "NKInnerPreConIts": 3,
     "writeSurfaceSolution": False,
@@ -174,7 +169,7 @@ DVCon.addThicknessConstraints2D(leList, teList, 2, 100, lower=0.1, upper=3.0)  #
 
 
 if comm.rank == 0:
-    fileName = "output/constraints.dat"
+    fileName = os.path.join(outputDirectory, "constraints.dat")
     DVCon.writeTecplot(fileName)
 
 # rst dvcon (end)
@@ -270,12 +265,14 @@ optProb.printSparsity()
 optOptions = {
     "Major iterations limit": 200,
     "Major step limit": 2.0,
-    "Major feasibility tolerance": 1.0e-6,
-    "Major optimality tolerance": 1.0e-6,
+    "Major feasibility tolerance": 1e-6,
+    "Major optimality tolerance": 1e-6,
+    "Print file": os.path.join(outputDirectory, "SNOPT_print.out"),
+    "Summary file": os.path.join(outputDirectory, "SNOPT_summary.out"),
 }
 opt = OPT("snopt", options=optOptions)
 
 # Run Optimization
-sol = opt(optProb, MP.sens, storeHistory="opt.hst")
+sol = opt(optProb, MP.sens, storeHistory=os.path.join(outputDirectory, "opt.hst"))
 if MPI.COMM_WORLD.rank == 0:
     print(sol)

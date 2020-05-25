@@ -1,5 +1,5 @@
 # rst Import
-import np as np
+import numpy as np
 from pyhyp import pyHyp
 
 # rst SurfMesh

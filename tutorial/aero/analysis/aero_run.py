@@ -15,14 +15,9 @@ aeroOptions = {
     "equationType": "RANS",
     # Solver Parameters
     "smoother": "dadi",
-    "CFL": 1.5,
-    "CFLCoarse": 1.25,
-    "MGCycle": "3w",
-    "MGStartLevel": -1,
-    "nCyclesCoarse": 250,
+    "MGCycle": "sg",
     # ANK Solver Parameters
     "useANKSolver": True,
-    "ankswitchtol": 1e-1,
     # NK Solver Parameters
     "useNKSolver": True,
     "nkswitchtol": 1e-4,

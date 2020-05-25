@@ -16,14 +16,11 @@ aeroOptions = {
     "infchangecorrection": True,
     # Solver Parameters
     "smoother": "dadi",
-    "CFL": 1.5,
-    "CFLCoarse": 1.25,
-    "MGCycle": "3w",
+    "MGCycle": "sg",
     "MGStartLevel": -1,
     "nCyclesCoarse": 250,
     # ANK Solver Parameters
     "useANKSolver": True,
-    "ankswitchtol": 1e-1,
     # NK Solver Parameters
     "useNKSolver": True,
     "nkswitchtol": 1e-4,

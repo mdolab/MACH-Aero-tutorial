@@ -2,6 +2,7 @@
 #         Import modules
 # ======================================================================
 # rst Imports (beg)
+import os
 from mpi4py import MPI
 from baseclasses import AeroProblem
 from adflow import ADFLOW
@@ -18,6 +19,9 @@ from multipoint import multiPointSparse
 MP = multiPointSparse(MPI.COMM_WORLD)
 MP.addProcessorSet("cruise", nMembers=1, memberSizes=MPI.COMM_WORLD.size)
 comm, setComm, setFlags, groupFlags, ptID = MP.createCommunicators()
+outputDirectory = "output"
+if comm.rank == 0:
+    os.mkdir(outputDirectory)
 # rst multipoint (end)
 # ======================================================================
 #         ADflow Set-up
@@ -27,18 +31,15 @@ gridFile = "wing_vol.cgns"
 aeroOptions = {
     # I/O Parameters
     "gridFile": gridFile,
-    "outputDirectory": ".",
+    "outputDirectory": outputDirectory,
     "monitorvariables": ["resrho", "cl", "cd"],
     "writeTecplotSurfaceSolution": True,
     # Physics Parameters
     "equationType": "RANS",
     # Solver Parameters
     "smoother": "dadi",
-    "CFL": 1.5,
-    "CFLCoarse": 1.25,
     "MGCycle": "sg",
-    "MGStartLevel": -1,
-    "nCyclesCoarse": 250,
+    "infchangecorrection": True,
     # ANK Solver Parameters
     "useANKSolver": True,
     # NK Solver Parameters
@@ -114,7 +115,7 @@ DVCon.addLeTeConstraints(0, "iLow")
 DVCon.addLeTeConstraints(0, "iHigh")
 
 if comm.rank == 0:
-    DVCon.writeTecplot("constraints.dat")
+    DVCon.writeTecplot(os.path.join(outputDirectory, "constraints.dat"))
 # rst dvcon (end)
 # ======================================================================
 #         Mesh Warping Set-up
@@ -196,15 +197,17 @@ optProb.printSparsity()
 # rst optimizer
 # Set up optimizer
 optOptions = {
-    "Major feasibility tolerance": 1.0e-4,
-    "Major optimality tolerance": 1.0e-4,
+    "Major feasibility tolerance": 1e-4,
+    "Major optimality tolerance": 1e-4,
     "Difference interval": 1e-3,
     "Hessian full memory": None,
-    "Function precision": 1.0e-8,
+    "Function precision": 1e-8,
+    "Print file": os.path.join(outputDirectory, "SNOPT_print.out"),
+    "Summary file": os.path.join(outputDirectory, "SNOPT_summary.out"),
 }
 opt = OPT("snopt", options=optOptions)
 
 # Run Optimization
-sol = opt(optProb, MP.sens, storeHistory="opt.hst")
+sol = opt(optProb, MP.sens, storeHistory=os.path.join(outputDirectory, "opt.hst"))
 if comm.rank == 0:
     print(sol)

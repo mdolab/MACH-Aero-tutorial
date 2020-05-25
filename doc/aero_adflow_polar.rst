@@ -38,8 +38,8 @@ Then copy the code from each of the following sections into this file.
 Import libraries
 ----------------
 .. literalinclude:: ../tutorial/aero/analysis/aero_run_drag_polar.py
-   :start-after: #rst Imports
-   :end-before: #rst ADflow options
+   :start-after: # rst Imports
+   :end-before: # rst ADflow options
 
 As in the previous example, we first import ADflow.
 We also need to import `baseclasses <https://github.com/mdolab/baseclasses>`_, which is a library of problem and solver classes used to encourage a common API within the MACH suite.
@@ -51,8 +51,8 @@ Importing mpi4py is not entirely necessary in the runscript because ADflow does 
 ADflow options
 --------------
 .. literalinclude:: ../tutorial/aero/analysis/aero_run_drag_polar.py
-   :start-after: #rst ADflow options
-   :end-before: #rst Start ADflow
+   :start-after: # rst ADflow options
+   :end-before: # rst Start ADflow
 
 An exhaustive list of the ADflow options and their descriptions can be found in the `docs <http://mdolab.engin.umich.edu/docs/packages/adflow/doc/options.html>`_.
 We will not go over every option here, as they are outlined in the previous example.
@@ -64,8 +64,8 @@ This produces a significant improvement in the convergence of the implicit solve
 Create solver
 -------------
 .. literalinclude:: ../tutorial/aero/analysis/aero_run_drag_polar.py
-   :start-after: #rst Start ADflow
-   :end-before: #rst Create AeroProblem
+   :start-after: # rst Start ADflow
+   :end-before: # rst Create AeroProblem
 
 When ADflow is instantiated, it reads in the mesh and then waits for the user to dictate further operations.
 As in the previous example, we tell ADflow to create lift distribution and section slice files for the test case.
@@ -74,8 +74,8 @@ ADflow appends a numeric counter to the file name, which is incremented for each
 Create AeroProblem Object
 -------------------------
 .. literalinclude:: ../tutorial/aero/analysis/aero_run_drag_polar.py
-    :start-after: #rst Create AeroProblem
-    :end-before: #rst Create polar arrays
+    :start-after: # rst Create AeroProblem
+    :end-before: # rst Create polar arrays
 
 As in the previous case, we create a single AeroProblem instance which describes the flight condition and reference quantities for the flow simulation.
 At this stage, the setup of the AeroProblem is the same as the single point analysis. 
@@ -84,8 +84,8 @@ However, as we will show later, we will update this AeroProblem with different v
 Create Drag Polar Arrays
 ------------------------
 .. literalinclude:: ../tutorial/aero/analysis/aero_run_drag_polar.py
-    :start-after: #rst Create polar arrays
-    :end-before: #rst Start loop
+    :start-after: # rst Create polar arrays
+    :end-before: # rst Start loop
 
 This is where the major differences between a single point run and the drag polar become evident.
 We start by creating an array of the angle of attack values that we wish to simulate.
@@ -96,8 +96,8 @@ The lift and drag data will be appended to these lists as the flow solutions are
 Loop over the Angle of Attack Input Arrays
 ------------------------------------------
 .. literalinclude:: ../tutorial/aero/analysis/aero_run_drag_polar.py
-    :start-after: #rst Start loop
-    :end-before: #rst update AP
+    :start-after: # rst Start loop
+    :end-before: # rst update AP
 
 Having created the input array and data storage lists, we can now loop over the desired angles of attack to evaluate the polar.
 We accomplish this by using the builtin "for" loop structure in python.
@@ -105,8 +105,8 @@ We accomplish this by using the builtin "for" loop structure in python.
 Update the AeroProblem
 ----------------------
 .. literalinclude:: ../tutorial/aero/analysis/aero_run_drag_polar.py
-    :start-after: #rst update AP
-    :end-before: #rst Run ADflow
+    :start-after: # rst update AP
+    :end-before: # rst Run ADflow
 
 Now for each angle of attack, we update two attributes of the aero problem.
 We update the name to include the current angle of attack.
@@ -116,8 +116,8 @@ We also update the alpha parameter, which is the attribute of the AeroProblem th
 Run solver and Accumulate Drag Polar
 ------------------------------------
 .. literalinclude:: ../tutorial/aero/analysis/aero_run_drag_polar.py
-    :start-after: #rst Run ADflow
-    :end-before: #rst Print polar
+    :start-after: # rst Run ADflow
+    :end-before: # rst Print polar
 
 Running the solver is identical to the simple single point example. 
 We simply call the CFDSolver instance with the current AeroProblem. 
@@ -128,7 +128,7 @@ The difference is that here, we append the coefficients from "funcs" into the "C
 Print Drag Polar
 ----------------
 .. literalinclude:: ../tutorial/aero/analysis/aero_run_drag_polar.py
-    :start-after: #rst Print polar
+    :start-after: # rst Print polar
 
 Once we complete the loop and evaluate all of the desired flow conditions, we can print the completed data set to the screen.
 

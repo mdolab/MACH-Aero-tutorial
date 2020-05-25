@@ -35,8 +35,8 @@ Then copy the code from each of the following sections into this file.
 Import libraries
 ----------------
 .. literalinclude:: ../tutorial/aero/meshing/volume/run_pyhyp.py
-   :start-after: #rst Imports
-   :end-before: #rst general
+   :start-after: # rst Imports
+   :end-before: # rst general
 
 This is the standard way of importing the pyHyp library.
 
@@ -48,8 +48,8 @@ Here we will point a few of the more basic options.
 For pyHyp, the options can be organized like so:
 
 .. literalinclude:: ../tutorial/aero/meshing/volume/run_pyhyp.py
-    :start-after: #rst general
-    :end-before: #rst grid
+    :start-after: # rst general
+    :end-before: # rst grid
 
 General options:
 
@@ -71,8 +71,8 @@ General options:
         Name given to wall surfaces. If a dictionary is submitted, each wall patch can have a different name. This can help the user to apply certain operations to specific wall patches in ADflow.
 
 .. literalinclude:: ../tutorial/aero/meshing/volume/run_pyhyp.py
-    :start-after: #rst grid
-    :end-before: #rst pseudo
+    :start-after: # rst grid
+    :end-before: # rst pseudo
 
 Grid parameters:
 
@@ -91,22 +91,22 @@ More information can be found in the `pyHyp docs <http://mdolab.engin.umich.edu/
 For example, ``epsE`` may be of interest when dealing with concave corners.
 
 .. literalinclude:: ../tutorial/aero/meshing/volume/run_pyhyp.py
-    :start-after: #rst pseudo
-    :end-before: #rst smoothing
+    :start-after: # rst pseudo
+    :end-before: # rst smoothing
 
 .. literalinclude:: ../tutorial/aero/meshing/volume/run_pyhyp.py
-    :start-after: #rst smoothing
-    :end-before: #rst solution
+    :start-after: # rst smoothing
+    :end-before: # rst solution
 
 .. literalinclude:: ../tutorial/aero/meshing/volume/run_pyhyp.py
-    :start-after: #rst solution
-    :end-before: #rst run pyHyp
+    :start-after: # rst solution
+    :end-before: # rst run pyHyp
 
 Running pyHyp is quite simple, as shown below.
 After the mesh extrusion is done, we can write the volume mesh with the ``writeCGNS`` function.
 
 .. literalinclude:: ../tutorial/aero/meshing/volume/run_pyhyp.py
-    :start-after: #rst run pyHyp
+    :start-after: # rst run pyHyp
 
 Run it yourself!
 ================================================================================

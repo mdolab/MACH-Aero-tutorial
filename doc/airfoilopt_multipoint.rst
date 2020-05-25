@@ -36,8 +36,8 @@ Specifying parameters for the optimization
 For multipoint optimization, the parameters have to be specified in lists of the same size.
 
 .. literalinclude:: ../tutorial/airfoilopt/multipoint/airfoil_multiopt.py
-    :start-after: #rst parameters (beg)
-    :end-before: #rst parameters (end)
+    :start-after: # rst parameters (beg)
+    :end-before: # rst parameters (end)
 
 
 Set the AeroProblem
@@ -47,8 +47,8 @@ For more than one AeroProblem, a list needs to be created.
 Each AeroProblem is created with the respective optimization point and appended to the list.
 
 .. literalinclude:: ../tutorial/airfoilopt/multipoint/airfoil_multiopt.py
-    :start-after: #rst aeroproblem (beg)
-    :end-before: #rst aeroproblem (end)
+    :start-after: # rst aeroproblem (beg)
+    :end-before: # rst aeroproblem (end)
 
 
 Optimization callback functions
@@ -58,8 +58,8 @@ The lines that require a call to the an AeroProblem is now put into a for-loop t
 
 
 .. literalinclude:: ../tutorial/airfoilopt/multipoint/airfoil_multiopt.py
-    :start-after: #rst funcs (beg)
-    :end-before: #rst funcs (end)
+    :start-after: # rst funcs (beg)
+    :end-before: # rst funcs (end)
 
 In the ``objCon`` function, the $c_L$ constraint is also placed into the for-loop.
 
@@ -69,8 +69,8 @@ Optimization problem
 Adding the constraints to the optimization problem requires adding them to each AeroProblem.
 
 .. literalinclude:: ../tutorial/airfoilopt/multipoint/airfoil_multiopt.py
-    :start-after: #rst optprob (beg)
-    :end-before: #rst optprob (end)
+    :start-after: # rst optprob (beg)
+    :end-before: # rst optprob (end)
 
 
 Run it yourself!

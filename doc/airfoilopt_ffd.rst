@@ -24,21 +24,21 @@ Import Packages
 Import numpy and sin, cos, pi, and log from math.
 
 .. literalinclude:: ../tutorial/airfoilopt/ffd/genFFD.py
-    :start-after: #rst Import
-    :end-before: #rst Load
+    :start-after: # rst Import
+    :end-before: # rst Load
 
 Load Airfoil
 =================
 	
 .. literalinclude:: ../tutorial/airfoilopt/ffd/genFFD.py
-    :start-after: #rst Load
-    :end-before: #rst UpperLower
+    :start-after: # rst Load
+    :end-before: # rst UpperLower
 
 The following two functions are used to get the upper and lower points of the airfoil. 
 
 .. literalinclude:: ../tutorial/airfoilopt/ffd/genFFD.py
-    :start-after: #rst UpperLower
-    :end-before: #rst FFDBox1
+    :start-after: # rst UpperLower
+    :end-before: # rst FFDBox1
 
 
 FFD Box Creation
@@ -47,8 +47,8 @@ FFD Box Creation
 The FFD box can now be set up. 
 
 .. literalinclude:: ../tutorial/airfoilopt/ffd/genFFD.py
-    :start-after: #rst FFDBox1
-    :end-before: #rst FFDBox2
+    :start-after: # rst FFDBox1
+    :end-before: # rst FFDBox2
 
 
 ``nffd`` signifies the number of chordwise points. An empty FFD box is created.
@@ -58,8 +58,8 @@ The FFD box can now be set up.
 
 
 .. literalinclude:: ../tutorial/airfoilopt/ffd/genFFD.py
-    :start-after: #rst FFDBox2
-    :end-before: #rst WriteFile
+    :start-after: # rst FFDBox2
+    :end-before: # rst WriteFile
 
 
 The x- and y- coordinates are transferred to the ``FFDbox`` variable.
@@ -71,7 +71,7 @@ Writing to File
 ====================================
 
 .. literalinclude:: ../tutorial/airfoilopt/ffd/genFFD.py
-    :start-after: #rst WriteFile
+    :start-after: # rst WriteFile
 
 
 The above script writes the FFD coordinates to a PLOT3D ``.xyz`` file, which will be used for optimization.

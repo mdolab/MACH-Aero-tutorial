@@ -59,8 +59,8 @@ We need to define the dimensions of the grid at the root and the tip, and the sc
 We also need to specify the number of control points we want along each dimension of the FFD grid.
 
 .. literalinclude:: ../tutorial/opt/ffd/simple_ffd.py
-    :start-after: #rst Dimensions
-    :end-before: #rst Compute
+    :start-after: # rst Dimensions
+    :end-before: # rst Compute
 
 Compute FFD nodes
 -----------------
@@ -69,15 +69,15 @@ The vector ``span_dist`` gives the spanwise distribution of the FFD sections, wh
 Here we use a distribution that varies from wider spacing at the root to narrower spacing at the tip.
 
 .. literalinclude:: ../tutorial/opt/ffd/simple_ffd.py
-    :start-after: #rst Compute
-    :end-before: #rst Write
+    :start-after: # rst Compute
+    :end-before: # rst Write
 
 Write to file
 -------------
 Finally we write to file, using the plot3d format.
 
 .. literalinclude:: ../tutorial/opt/ffd/simple_ffd.py
-    :start-after: #rst Write
+    :start-after: # rst Write
 
 Generate the FFD
 ----------------
@@ -103,8 +103,8 @@ Then copy the code from each of the following sections into this file.
 Import libraries
 ----------------
 .. literalinclude:: ../tutorial/opt/ffd/parametrize.py
-    :start-after: #rst Import libraries
-    :end-before: #rst Create DVGeometry object
+    :start-after: # rst Import libraries
+    :end-before: # rst Create DVGeometry object
 
 As mentioned in the introduction, the geometric parametrization code is housed in the DVGeometry class which resides in the pyGeo module.
 So to begin with, we import DVGeometry from pyGeo.
@@ -116,8 +116,8 @@ All that is needed to create an instance of the DVGeometry class is an FFD file 
 Usually we call the DVGeometry instance ``DVGeo``.
 
 .. literalinclude:: ../tutorial/opt/ffd/parametrize.py
-    :start-after: #rst Create DVGeometry object
-    :end-before: #rst Create reference axis
+    :start-after: # rst Create DVGeometry object
+    :end-before: # rst Create reference axis
 
 Define the variables
 --------------------
@@ -140,8 +140,8 @@ The reference axis is a B-spline embedded in the FFD volume.
 For a wing, we can generate this reference axis simply by stating the fraction of the chord length at which it should be placed and the index of the FFD volume along which it should extend.
 
 .. literalinclude:: ../tutorial/opt/ffd/parametrize.py
-    :start-after: #rst Create reference axis
-    :end-before: #rst Dihedral
+    :start-after: # rst Create reference axis
+    :end-before: # rst Dihedral
 
 In this example, the reference axis is placed at the quarter-chord along the spanwise direction with control points defined at each section of FFD control points.
 The name of the reference axis is "wing".
@@ -162,8 +162,8 @@ We will go through a few examples.
 Dihedral
 ~~~~~~~~
 .. literalinclude:: ../tutorial/opt/ffd/parametrize.py
-    :start-after: #rst Dihedral
-    :end-before: #rst Twist
+    :start-after: # rst Dihedral
+    :end-before: # rst Twist
 
 For every callback function, the required inputs are ``val``, which contains the design variable array, and ``geo``, which will contain the DVGeo object.
 In this example, we first extract the coordinates of the reference axis control points with the function ``extractCoef``.
@@ -174,8 +174,8 @@ Finally, we restore the new control point coordinates to DVGeo with the call ``r
 Twist
 ~~~~~
 .. literalinclude:: ../tutorial/opt/ffd/parametrize.py
-    :start-after: #rst Twist
-    :end-before: #rst Taper
+    :start-after: # rst Twist
+    :end-before: # rst Taper
 
 The twist function makes use of the built-in rotation functions in DVGeometry.
 In the callback function, we loop through a dictionary containing the values of rotation about the z-axis for the "wing" reference axis.
@@ -186,8 +186,8 @@ Twisting about the x and y axes is provided through the ``rot_x`` and ``rot_y`` 
 Taper
 ~~~~~
 .. literalinclude:: ../tutorial/opt/ffd/parametrize.py
-    :start-after: #rst Taper
-    :end-before: #rst Add global dvs
+    :start-after: # rst Taper
+    :end-before: # rst Add global dvs
 
 Here we define a taper variable, which controls the chord length of the root and tip airfoils and does a linear interpolation for the chords in between.
 First, we extract the normalized position of the reference axis control points with the call ``extractS``.
@@ -207,8 +207,8 @@ We have now defined the callback functions for the global design variables, but 
 This is done with the call ``addGeoDVGlobal``.
 
 .. literalinclude:: ../tutorial/opt/ffd/parametrize.py
-    :start-after: #rst Add global dvs
-    :end-before: #rst Add local dvs
+    :start-after: # rst Add global dvs
+    :end-before: # rst Add local dvs
 
 We must provide a variable name, initial value, callback function, bounds, and scaling factor.
 The ``value`` input must be the size of the design variable vector, but the bounds and scaling factor can be scalars if they are to be applied uniformly to the entire design variable group.
@@ -220,8 +220,8 @@ There are two options for defining local design variables.
 Only one of these should be used at one time.
 
 .. literalinclude:: ../tutorial/opt/ffd/parametrize.py
-    :start-after: #rst Add local dvs
-    :end-before: #rst Embed points
+    :start-after: # rst Add local dvs
+    :end-before: # rst Embed points
 
 The first, ``addGeoDVLocal``, allows displacement along one of the global coordinate axes (x, y, or z).
 The other options, ``addGeoDVSectionLocal``, defines the displacement direction based on the plane of the FFD section to which the given control point belongs.
@@ -241,8 +241,8 @@ First we have to embed at least one point set in the FFD.
 Normally, ADflow automatically embeds the surface mesh nodes in the FFD, but here we will embed surface coordinates obtained using IDWarp's ``getSurfaceCoordinates`` function (just for this example without ADflow).
 
 .. literalinclude:: ../tutorial/opt/ffd/parametrize.py
-    :start-after: #rst Embed points
-    :end-before: #rst Change dvs
+    :start-after: # rst Embed points
+    :end-before: # rst Change dvs
 
 Change the design variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -251,8 +251,8 @@ To adjust the variables, simply change the values in each variable array.
 Once this is done, you can return the new values with the call ``setDesignVars``.
 
 .. literalinclude:: ../tutorial/opt/ffd/parametrize.py
-    :start-after: #rst Change dvs
-    :end-before: #rst Update
+    :start-after: # rst Change dvs
+    :end-before: # rst Update
 
 Write deformed FFD to file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -261,7 +261,7 @@ We can view the current shape of the FFD by calling ``writePlot3d``.
 We can also view the updated surface coordinates by calling ``writePointSet``.
 
 .. literalinclude:: ../tutorial/opt/ffd/parametrize.py
-    :start-after: #rst Update
+    :start-after: # rst Update
 
 Run it yourself!
 ================================================================================

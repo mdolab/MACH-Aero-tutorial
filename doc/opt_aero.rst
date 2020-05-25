@@ -43,8 +43,8 @@ Then copy the code from each of the following sections into this file.
 Import libraries
 ----------------
 .. literalinclude:: ../tutorial/opt/aero/aero_opt.py
-    :start-after: #rst Imports (beg)
-    :end-before: #rst Imports (end)
+    :start-after: # rst Imports (beg)
+    :end-before: # rst Imports (end)
 
 The multipoint library is the only new library to include in this script.
 
@@ -55,8 +55,8 @@ This can be helpful if we want to consider multiple design points, each with a d
 In this case, we create a processor set for cruise cases, but we only add one point.
 
 .. literalinclude:: ../tutorial/opt/aero/aero_opt.py
-    :start-after: #rst multipoint (beg)
-    :end-before: #rst multipoint (end)
+    :start-after: # rst multipoint (beg)
+    :end-before: # rst multipoint (end)
 
 If we want to add more points, we can increase the quantity ``nMembers``.
 We can choose the number of processors per point with the argument ``memberSizes``.
@@ -69,14 +69,14 @@ The set-up for adflow should look the same as for the aerodynamic analysis scrip
 We add a single lift distribution with 200 sampling points.
 
 .. literalinclude:: ../tutorial/opt/aero/aero_opt.py
-    :start-after: #rst adflow (beg)
-    :end-before: #rst adflow (end)
+    :start-after: # rst adflow (beg)
+    :end-before: # rst adflow (end)
 
 Set the AeroProblem
 -------------------
 .. literalinclude:: ../tutorial/opt/aero/aero_opt.py
-    :start-after: #rst aeroproblem (beg)
-    :end-before: #rst aeroproblem (end)
+    :start-after: # rst aeroproblem (beg)
+    :end-before: # rst aeroproblem (end)
 
 The only difference in setting up the AeroProblem is that now we add angle-of-attack as a design variable.
 Any of the quantities included in the initialization of the AeroProblem can be added as design variables.
@@ -88,8 +88,8 @@ We include twist and local variables in the optimization.
 After setting up the DVGeometry instance we have to provide it to ADflow with the call ``setDVGeo``.
 
 .. literalinclude:: ../tutorial/opt/aero/aero_opt.py
-    :start-after: #rst dvgeo (beg)
-    :end-before: #rst dvgeo (end)
+    :start-after: # rst dvgeo (beg)
+    :end-before: # rst dvgeo (end)
 
 Geometric constraints
 ---------------------
@@ -109,14 +109,14 @@ When we have both twist and local shape variables, we want to prevent the local 
 This is done by constraining that the upper and lower nodes on the leading and trailing edges must move in opposite directions.
 
 .. literalinclude:: ../tutorial/opt/aero/aero_opt.py
-    :start-after: #rst dvcon (beg)
-    :end-before: #rst dvcon (end)
+    :start-after: # rst dvcon (beg)
+    :end-before: # rst dvcon (end)
 
 Mesh warping set-up
 -------------------
 .. literalinclude:: ../tutorial/opt/aero/aero_opt.py
-    :start-after: #rst warp (beg)
-    :end-before: #rst warp (end)
+    :start-after: # rst warp (beg)
+    :end-before: # rst warp (end)
 
 Optimization callback functions
 -------------------------------
@@ -125,8 +125,8 @@ In this case ``cruiseFuncs`` and ``cruiseFuncsSens`` belong to the ``cruise`` pr
 Then we need to set up an objCon function, which is used to create abstract functions of other functions.
 
 .. literalinclude:: ../tutorial/opt/aero/aero_opt.py
-    :start-after: #rst funcs (beg)
-    :end-before: #rst funcs (end)
+    :start-after: # rst funcs (beg)
+    :end-before: # rst funcs (end)
 
 Now we will explain each of these callback functions.
 
@@ -174,15 +174,15 @@ We also need to provide it with the objCon and the optProb.
 The call ``optProb.printSparsity()`` prints out the constraint Jacobian at the beginning of the optimization.
 
 .. literalinclude:: ../tutorial/opt/aero/aero_opt.py
-    :start-after: #rst optprob (beg)
-    :end-before: #rst optprob (end)
+    :start-after: # rst optprob (beg)
+    :end-before: # rst optprob (end)
 
 Run optimization
 ----------------
 To finish up, we choose the optimizer and then run the optimization.
 
 .. literalinclude:: ../tutorial/opt/aero/aero_opt.py
-    :start-after: #rst optimizer
+    :start-after: # rst optimizer
 
 Run it yourself!
 ================================================================================

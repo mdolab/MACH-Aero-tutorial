@@ -36,8 +36,8 @@ Then copy the code from each of the following sections into this file.
 Import libraries
 ----------------
 .. literalinclude:: ../tutorial/aero/analysis/aero_run.py
-   :start-after: #rst Imports
-   :end-before: #rst ADflow options
+   :start-after: # rst Imports
+   :end-before: # rst ADflow options
 
 First we import ADflow.
 We also need to import `baseclasses <https://github.com/mdolab/baseclasses>`_, which is a library of problem and solver classes used to encourage a common API within the MACH suite.
@@ -48,8 +48,8 @@ Importing mpi4py is not entirely necessary in the runscript because ADflow does 
 ADflow options
 --------------
 .. literalinclude:: ../tutorial/aero/analysis/aero_run.py
-   :start-after: #rst ADflow options
-   :end-before: #rst Start ADflow
+   :start-after: # rst ADflow options
+   :end-before: # rst Start ADflow
 
 An exhaustive list of the ADflow options and their descriptions can be found in the docs.
 For our purposes here, I will go over them briefly.
@@ -62,8 +62,8 @@ We strongly recommend going over the descriptions and tips on solvers and solver
 Create solver
 -------------
 .. literalinclude:: ../tutorial/aero/analysis/aero_run.py
-   :start-after: #rst Start ADflow
-   :end-before: #rst Create AeroProblem
+   :start-after: # rst Start ADflow
+   :end-before: # rst Create AeroProblem
 
 When ADflow is instantiated, it reads in the mesh and then waits for the user to dictate further operations.
 Before running the case, we can choose to set up some additional output options.
@@ -73,8 +73,8 @@ Also, ADflow can write airfoil data for a given set of slices along the wing usi
 Set flow conditions
 -------------------
 .. literalinclude:: ../tutorial/aero/analysis/aero_run.py
-    :start-after: #rst Create AeroProblem
-    :end-before: #rst Run ADflow
+    :start-after: # rst Create AeroProblem
+    :end-before: # rst Run ADflow
 
 The flow conditions and any auxiliary information about the geometry (such as reference dimensions) are provided to ADflow by way of an AeroProblem.
 The AeroProblem automatically generates complete flow state information from the Mach number and altitude based on the 1976 U.S. Standard Atmosphere.
@@ -85,8 +85,8 @@ Some available functions include ``'cl'``, ``'cd'``, ``'cmz'``, ``'lift'``, and 
 Run solver
 ----------
 .. literalinclude:: ../tutorial/aero/analysis/aero_run.py
-    :start-after: #rst Run ADflow
-    :end-before: #rst Evaluate and print
+    :start-after: # rst Run ADflow
+    :end-before: # rst Evaluate and print
 
 Running the solver is very simple.
 It only requires an AeroProblem to run.
@@ -94,7 +94,7 @@ It only requires an AeroProblem to run.
 Evaluate functions
 ------------------
 .. literalinclude:: ../tutorial/aero/analysis/aero_run.py
-    :start-after: #rst Evaluate and print
+    :start-after: # rst Evaluate and print
 
 The function evaluation is done separately from the solution.
 We pass a dictionary to ADflow and it will populate it with the prescribed functions.

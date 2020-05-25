@@ -39,8 +39,8 @@ Then copy the code from each of the following sections into this file.
 Import libraries
 ----------------
 .. literalinclude:: ../tutorial/airfoilopt/singlepoint/airfoil_opt.py
-    :start-after: #rst Imports (beg)
-    :end-before: #rst Imports (end)
+    :start-after: # rst Imports (beg)
+    :end-before: # rst Imports (end)
 
 
 Specifying parameters for the optimization
@@ -49,8 +49,8 @@ Several conditions for the optimization are specified at the beginning of the sc
 These include the coefficient of lift constraint value, Mach number, and altitude to indicate flow conditions. 
 
 .. literalinclude:: ../tutorial/airfoilopt/singlepoint/airfoil_opt.py
-    :start-after: #rst parameters (beg)
-    :end-before: #rst parameters (end)
+    :start-after: # rst parameters (beg)
+    :end-before: # rst parameters (end)
 
 The angle of attack serves as the initial value for the optimization and should not affect the optimized result.
 
@@ -60,8 +60,8 @@ Creating processor sets
 Allocating sets of processors for different analyses can be helpful for multiple design points, but this is a single-point optimization, so only one point is added. 
 
 .. literalinclude:: ../tutorial/airfoilopt/singlepoint/airfoil_opt.py
-    :start-after: #rst multipoint (beg)
-    :end-before: #rst multipoint (end)
+    :start-after: # rst multipoint (beg)
+    :end-before: # rst multipoint (end)
 
 
 ADflow set-up
@@ -70,8 +70,8 @@ ADflow set-up
 The ADflow set-up looks similar to the aerodynamic analysis script.
  
 .. literalinclude:: ../tutorial/airfoilopt/singlepoint/airfoil_opt.py
-    :start-after: #rst adflow (beg)
-    :end-before: #rst adflow (end)
+    :start-after: # rst adflow (beg)
+    :end-before: # rst adflow (end)
 
 As it is, the options specified above allow for a good convergence of NACA0012 airfoil analysis, but may not converge for other airfoils. 
 Some useful options to adjust are:
@@ -97,8 +97,8 @@ Set the AeroProblem
 We add angle of attack as a design variable and set up the AeroProblem using given flow conditions.
 
 .. literalinclude:: ../tutorial/airfoilopt/singlepoint/airfoil_opt.py
-    :start-after: #rst aeroproblem (beg)
-    :end-before: #rst aeroproblem (end)
+    :start-after: # rst aeroproblem (beg)
+    :end-before: # rst aeroproblem (end)
 
 
 Geometric parametrization
@@ -107,8 +107,8 @@ Geometric parametrization
 The set-up for DVGeometry is simpler for an airfoil since it doesn't involve span-wise variables such as twist, dihedral, or taper.
 
 .. literalinclude:: ../tutorial/airfoilopt/singlepoint/airfoil_opt.py
-    :start-after: #rst dvgeo (beg)
-    :end-before: #rst dvgeo (end)
+    :start-after: # rst dvgeo (beg)
+    :end-before: # rst dvgeo (end)
 
 The local design variable ``shape`` is added.
 
@@ -131,8 +131,8 @@ When we have both twist and local shape variables, we want to prevent the local 
 This is done by constraining that the upper and lower nodes on the leading and trailing edges must move in opposite directions.
 
 .. literalinclude:: ../tutorial/airfoilopt/singlepoint/airfoil_opt.py
-    :start-after: #rst dvcon (beg)
-    :end-before: #rst dvcon (end)
+    :start-after: # rst dvcon (beg)
+    :end-before: # rst dvcon (end)
 
 The parameters ``lower`` and ``upper`` are thickness or volume bounds relative to the original airfoil. 
 For example, the lower bound of 0.1 in the thickness constraint means that the optimized airfoil can be no thinner than 10% of the original airfoil.
@@ -141,8 +141,8 @@ Mesh warping set-up
 -------------------
 
 .. literalinclude:: ../tutorial/airfoilopt/singlepoint/airfoil_opt.py
-    :start-after: #rst warp (beg)
-    :end-before: #rst warp (end)
+    :start-after: # rst warp (beg)
+    :end-before: # rst warp (end)
 
 Optimization callback functions
 -------------------------------
@@ -154,8 +154,8 @@ Then we need to set up an objCon function, which is used to create abstract func
 This should be similar for all single-point optimizations.
 
 .. literalinclude:: ../tutorial/airfoilopt/singlepoint/airfoil_opt.py
-    :start-after: #rst funcs (beg)
-    :end-before: #rst funcs (end)
+    :start-after: # rst funcs (beg)
+    :end-before: # rst funcs (end)
 
 cruiseFuncs
 ~~~~~~~~~~~
@@ -196,14 +196,14 @@ We also need to provide it with the objCon and the optProb.
 The call optProb.printSparsity() prints out the constraint Jacobian at the beginning of the optimization.
 
 .. literalinclude:: ../tutorial/airfoilopt/singlepoint/airfoil_opt.py
-    :start-after: #rst optprob (beg)
-    :end-before: #rst optprob (end)
+    :start-after: # rst optprob (beg)
+    :end-before: # rst optprob (end)
 
 
 Run optimization
 ----------------
 .. literalinclude:: ../tutorial/airfoilopt/singlepoint/airfoil_opt.py
-    :start-after: #rst optimizer
+    :start-after: # rst optimizer
 
 Run it yourself!
 =================

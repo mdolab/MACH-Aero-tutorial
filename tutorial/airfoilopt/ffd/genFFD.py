@@ -7,7 +7,7 @@ from math import sin,cos,pi,log
 #rst Load
 airfoil = np.loadtxt('n0012.dat')
 npts = airfoil.shape[0]
-nmid = (npts+1)/2
+nmid = (npts + 1) // 2
 
 #rst UpperLower
 def getupper(xtemp):

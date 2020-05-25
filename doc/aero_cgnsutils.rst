@@ -16,14 +16,13 @@ For example, creating a 3D cartesian block of a given size with a specified unif
 We have developed a suite of functions called `cgnsUtilities <https://bitbucket.org/mdolab/cgnsutilities>`_ that can be called from the command line to perform simple, repeatable tasks like this.
 
 Files
-================================================================================
+=====
 Navigate to the directory ``aero/surface/volume`` in your tutorial folder.
 We will perform operations on the file ``wing_vol.cgns``.
 
 cgnsUtilities Operations
-================================================================================
-To get a list of all of the operations available with cgnsUtilities, run the command:
-::
+========================
+To get a list of all of the operations available with cgnsUtilities, run the command::
 
     $ cgns_utils -h
 
@@ -40,7 +39,7 @@ To coarsen the mesh run the following from the terminal:
     $ cgns_utils coarsen wing_vol.cgns wing_vol_coarsened.cgns
 
 CGNS Viewer
-================================================================================
+===========
 Bundled with cgnsUtilities is a very barebones mesh viewing software that can be useful for debugging problems with the mesh such as incorrect boundary conditions or missing face-to-face connections.
 CGNS Viewer can be run from the terminal with the command
 ::

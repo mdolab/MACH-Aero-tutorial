@@ -4,9 +4,9 @@
 .. _airfoilopt_mesh:
 
 
-*****************
+***************
 Mesh Generation
-*****************
+***************
 
 In this tutorial, we will use pyHyp to generate a 3D mesh in CGNS format. 
 The coordinates for the NACA0012 airfoil are in the file ``n0012.dat``. 
@@ -28,7 +28,7 @@ Import the pyHyp libraries and numpy.
 
 
 Surface Mesh Generation
-============================
+=======================
 
 .. literalinclude:: ../tutorial/airfoilopt/mesh/genMesh.py
     :start-after: # rst SurfMesh
@@ -41,7 +41,7 @@ By performing this intermediate step, the volume mesh generation is faster and h
 
 
 Options
-========
+=======
 
 .. literalinclude:: ../tutorial/airfoilopt/mesh/genMesh.py
     :start-after: # rst GenOptions
@@ -49,7 +49,7 @@ Options
 
 
 General Options
------------------
+---------------
 
 ``inputFile``
     Name of the surface mesh file.
@@ -68,7 +68,7 @@ General Options
     :end-before: # rst OtherOptions
 
 Grid Parameters
------------------
+---------------
 
 ``N``
     Number of nodes in off-wall direction. 
@@ -84,7 +84,7 @@ Grid Parameters
 
 
 Running pyHyp and Writing to File
-====================================
+=================================
 
 The following three lines of code extrude the surface mesh and write the resulting volume mesh to a ``.cgns`` file. 
 

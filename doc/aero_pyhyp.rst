@@ -9,14 +9,14 @@ Volume Meshing
 **************
 
 Introduction
-================================================================================
+============
 The objective of this section is to create a volume mesh using pyHyp.
 The surface mesh serves as the seed for hyperbolically marching the mesh to the farfield.
 Generating the volume mesh in this way is fast, repeatable, and results in a high-quality mesh.
 More details on pyHyp can be found in the `pyHyp docs <http://mdolab.engin.umich.edu/docs/packages/pyhyp/doc/index.html>`_ or in the code itself.
 
 Files
-================================================================================
+=====
 Navigate to the directory ``aero/meshing/volume`` in your tutorial folder.
 Copy the following files from the surface meshing directory:
 ::
@@ -28,7 +28,7 @@ Create the following empty runscript in the current directory:
 - ``run_pyhyp.py``
 
 Dissecting the pyHyp runscript
-================================================================================
+==============================
 Open the file ``run_pyhyp.py`` with your favorite text editor.
 Then copy the code from each of the following sections into this file.
 
@@ -109,7 +109,7 @@ After the mesh extrusion is done, we can write the volume mesh with the ``writeC
     :start-after: # rst run pyHyp
 
 Run it yourself!
-================================================================================
+================
 You can now run the python file with the command:
 ::
 

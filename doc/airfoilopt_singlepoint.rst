@@ -4,25 +4,26 @@
 .. _airfoilopt_singlepoint:
 
 
-***************************
+*************************
 Single Point Optimization
-***************************
+*************************
 
 Introduction
-===============
-We will now proceed to optimizing a NACA0012 airfoil for a given set of flow conditions. It is very similar to a wing optimization. The optimization problem is defined as:
+============
+We will now proceed to optimizing a NACA0012 airfoil for a given set of flow conditions. It is very similar to a wing optimization.
+The optimization problem is defined as:
 
 | *minimize*
-|    C\ :sub:`D`
+|    :math:`C_D`
 | *with respect to*
 |    10 shape variables
 | *subject to*
-|    C\ :sub:`L` = 0.5
+|    :math:`C_L = 0.5`
 
 The shape variables are controlled by the FFD points specified in the FFD file.
 
 Files
-===============
+=====
 
 Copy the FFD file, ``ffd.xyz``, and the CGNS mesh file, ``n0012.cgns``, generated previously, into the directory.
 
@@ -32,7 +33,7 @@ Create the following empty runscript in the current directory:
 
 
 Dissecting the aerodynamic optimization script
-===============================================
+==============================================
 Open the file ``airfoil_opt.py`` in your favorite text editor.
 Then copy the code from each of the following sections into this file.
 
@@ -44,7 +45,7 @@ Import libraries
 
 
 Specifying parameters for the optimization
---------------------------------------------
+------------------------------------------
 Several conditions for the optimization are specified at the beginning of the script. 
 These include the coefficient of lift constraint value, Mach number, and altitude to indicate flow conditions. 
 
@@ -149,8 +150,9 @@ Optimization callback functions
 
 Note: This section is also the same as the corresponding section in aircraft optimization.
 
-First we must set up a callback function and a sensitivity function for each processor set. In this case cruiseFuncs and cruiseFuncsSens belong to the cruise processor set. 
-Then we need to set up an objCon function, which is used to create abstract functions of other functions. 
+First we must set up a callback function and a sensitivity function for each processor set.
+In this case cruiseFuncs and cruiseFuncsSens belong to the cruise processor set.
+Then we need to set up an objCon function, which is used to create abstract functions of other functions.
 This should be similar for all single-point optimizations.
 
 .. literalinclude:: ../tutorial/airfoilopt/singlepoint/airfoil_opt.py
@@ -206,17 +208,15 @@ Run optimization
     :start-after: # rst optimizer
 
 Run it yourself!
-=================
+================
 
-To run the script, use the ``mpirun`` and place the total number of processors after the ``-np`` argument.
-::
+To run the script, use the ``mpirun`` and place the total number of processors after the ``-np`` argument::
 
 	$ mkdir output
 	$ mpirun -np 4 python airfoil_opt.py | tee output.txt
 
-The command ``tee`` saves the text outputs of the optimization to the specified text file. You can follow the progress of the optimization using OptView, as explained in pyOptSparse.
-
-
+The command ``tee`` saves the text outputs of the optimization to the specified text file.
+You can follow the progress of the optimization using OptView, as explained in pyOptSparse.
 
 
 .. centered::

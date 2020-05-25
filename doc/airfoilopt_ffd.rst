@@ -4,9 +4,9 @@
 .. _airfoilopt_ffd:
 
 
-***************************
+*************************
 Geometric Parametrization
-***************************
+*************************
 
 Next, the FFD (Free-Form Deformation) file has to be generated in PLOT3D format. 
 This file contains the coordinates of the FFD points around the airfoil. 
@@ -19,7 +19,7 @@ Create the following empty runscript in the current directory.
 - ``genFFD.py``
 
 Import Packages
-=================
+===============
 
 Import numpy and sin, cos, pi, and log from math.
 
@@ -28,7 +28,7 @@ Import numpy and sin, cos, pi, and log from math.
     :end-before: # rst Load
 
 Load Airfoil
-=================
+============
 	
 .. literalinclude:: ../tutorial/airfoilopt/ffd/genFFD.py
     :start-after: # rst Load
@@ -42,7 +42,7 @@ The following two functions are used to get the upper and lower points of the ai
 
 
 FFD Box Creation
-============================
+================
 
 The FFD box can now be set up. 
 
@@ -68,7 +68,7 @@ The z-coordinates are updated to 0 and 1.
 
 
 Writing to File
-====================================
+===============
 
 .. literalinclude:: ../tutorial/airfoilopt/ffd/genFFD.py
     :start-after: # rst WriteFile

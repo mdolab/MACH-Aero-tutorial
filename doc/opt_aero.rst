@@ -9,21 +9,21 @@ Aerodynamic Optimization
 ************************
 
 Introduction
-================================================================================
+============
 We will now demonstrate how to optimize the aerodynamic shape of a wing.
 We will be combining aspects of all of the following sections: :ref:`aero_adflow`, :ref:`opt_pyopt`, and :ref:`opt_ffd`.
 The optimization problem is defined as
 
 | *minimize*
-|    C\ :sub:`D`
+|    :math:`C_D`
 | *with respect to*
 |    7 twist variables
 |    96 shape variables
 | *subject to*
-|    C\ :sub:`L` = 0.5
+|    :math:`C_L = 0.5`
 
 Files
-================================================================================
+=====
 Navigate to the directory ``opt/aero`` in your tutorial folder.
 Copy the following files from the MACH_Aero_Tutorials repository:
 ::
@@ -36,7 +36,7 @@ Create the following empty runscript in the current directory:
 - ``aero_opt.py``
 
 Dissecting the aerodynamic optimization script
-================================================================================
+==============================================
 Open the file ``aero_opt.py`` in your favorite text editor.
 Then copy the code from each of the following sections into this file.
 
@@ -149,9 +149,7 @@ objCon
 ~~~~~~
 The main input to the ``objCon`` callback function is the dictionary of functions (which is a compilation of all the ``funcs`` dictionaries from each of the design points).
 Inside ``objCon``, the user can define functionals (or functions of other functions).
-For instance, to maximize L/D, you could define the objective function as
-
-::
+For instance, to maximize L/D, you could define the objective function as::
 
     funcs['obj'] = funcs['cl'] / funcs['cd']
 
@@ -185,9 +183,8 @@ To finish up, we choose the optimizer and then run the optimization.
     :start-after: # rst optimizer
 
 Run it yourself!
-================================================================================
-To run the script, use the ``mpirun`` and place the total number of processors after the ``-np`` argument.
-::
+================
+To run the script, use the ``mpirun`` and place the total number of processors after the ``-np`` argument::
 
     $ mpirun -np 4 python aero_opt.py
 

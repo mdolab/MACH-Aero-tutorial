@@ -9,7 +9,7 @@ Surface Meshing
 ***************
 
 Introduction
-================================================================================
+============
 The objective of this section is to familiarize the user with the ICEM CFD software and to create a surface mesh.
 ICEM CFD is a meshing software with advanced CAD/geometry readers and repairs tools.
 It allows the user to produce volume or surface meshes.
@@ -20,7 +20,7 @@ For more theoretical background of mesh generation, refer to "Thompson, et.al. H
 .. warning:: Make sure you save your work often when using ICEM. It is known to crash at the worst possible moments. We also recommend saving instances of a single project in different locations just in case you need to go back to a previous state.
 
 Files
-================================================================================
+=====
 Navigate to the directory ``aero/meshing/surface`` in your tutorial folder.
 Copy the following files from the the ``geometry`` directory:
 ::
@@ -28,20 +28,18 @@ Copy the following files from the the ``geometry`` directory:
     $ cp ../../geometry/wing.tin .
 
 Basic ICEM Usage
-================================================================================
+================
 This section contains some general usage information that will helpful in becoming familiar with ICEM.
 The actual tutorial starts with :ref:`surface_meshing`.
 
 Opening ICEM
 ------------
-First determine where the ICEM executable is located
-::
+First determine where the ICEM executable is located::
 
     $ which icemcfd
     /usr/ansys_inc/v150/icemcfd/linux64_amd/bin/icemcfd
 
-Then run the executable with superuser privileges
-::
+Then run the executable with superuser privileges::
 
     $ sudo /usr/ansys_inc/v150/icemcfd/linux64_amd/bin/icemcfd
 
@@ -83,7 +81,7 @@ The two buttons outlined in red can be used to view the geometry as a wire frame
 .. _surface_meshing:
 
 Creating a surface mesh
-================================================================================
+=======================
 
 Load the geometry
 -----------------
@@ -123,8 +121,8 @@ All geometry creation and manipulation is done under the ``Geometry`` tab, outli
 .. image:: images/icem_TabGeometry.png
    :scale: 80
 
-1. Create curves and points from surfaces.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1. Create curves and points from surfaces
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     You will notice that the geometry section of the model tree contains only Subsets and Surfaces.
     We want to see the curves and points that define the boundaries of these surfaces.
     This can be done by clicking on the ``Repair Geometry`` button in the ``Geometry`` tab.

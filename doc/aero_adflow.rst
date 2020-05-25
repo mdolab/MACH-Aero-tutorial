@@ -9,14 +9,14 @@ Analysis with ADflow
 ********************
 
 Introduction
-================================================================================
+============
 There is no graphical user interface for ADflow.
 The cases are prepared with python scripts and run from the command line.
 In this section of the tutorial, we will explain the nuts and bolts of a basic ADflow runscript.
 You will find a complete introduction to ADflow in the `docs <http://mdolab.engin.umich.edu/docs/packages/adflow/doc/introduction.html>`_ .
 
 Files
-================================================================================
+=====
 Navigate to the directory ``aero/analysis`` in your tutorial folder.
 Copy the following files from the volume meshing directory:
 ::
@@ -29,7 +29,7 @@ Create the following empty runscript in the current directory:
 
 
 Dissecting the ADflow runscript
-================================================================================
+===============================
 Open the file ``aero_run.py`` with your favorite text editor.
 Then copy the code from each of the following sections into this file.
 
@@ -102,9 +102,8 @@ We can request additional functions with the `evalFuncs` parameter.
 Finally we print out the requested functions on the root proc.
 
 Run it yourself!
-================================================================================
-First make the output directory and then run the script:
-::
+================
+First make the output directory and then run the script::
 
     $ mkdir output
     $ mpirun -np 4 python aero_run.py

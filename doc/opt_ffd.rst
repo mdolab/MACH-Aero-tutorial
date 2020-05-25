@@ -28,13 +28,11 @@ Before diving into the parametrization, however, we need to generate an FFD, whi
 Files
 ================================================================================
 Navigate to the directory ``opt/ffd`` in your tutorial folder.
-Copy the following files from the MACH_Aero_Tutorials repository:
-::
+Copy the following files from the MACH_Aero_Tutorials repository::
 
     $ cp MACH_Aero_Tutorials/tutorial/opt/ffd/simple_ffd.py .
 
-Also copy the volume mesh from the MACH_Aero_Tutorials repository:
-::
+Also copy the volume mesh from the MACH_Aero_Tutorials repository::
 
     $ cp MACH_Aero_Tutorials/tutorial/aero/analysis/wing_vol.cgns .
 
@@ -43,7 +41,7 @@ Create the following empty runscript in the current directory:
 - ``parametrize.py``
 
 Creating an FFD volume
-================================================================================
+======================
 As mentioned above, the actual definition of an FFD volume is simply a 3D grid of points.
 We can create this by hand in a meshing software like ICEM, or for very simple cases, we can generate it with a script.
 There is also a funtion `write_wing_FFD_file` in `pygeo/geo_utils.py` that you can use to generate a simple FFD by specifying slices and point distributions.
@@ -81,8 +79,7 @@ Finally we write to file, using the plot3d format.
 
 Generate the FFD
 ----------------
-Run the script with the command
-::
+Run the script with the command::
 
     $ python simple_ffd.py
 
@@ -96,7 +93,7 @@ We can check this by viewing the mesh and the FFD volume in Tecplot.
    :align: center
 
 Setting up a geometric parametrization with DVGeometry
-================================================================================
+======================================================
 Open the file ``parametrize.py`` in your favorite text editor.
 Then copy the code from each of the following sections into this file.
 
@@ -264,7 +261,7 @@ We can also view the updated surface coordinates by calling ``writePointSet``.
     :start-after: # rst Update
 
 Run it yourself!
-================================================================================
+================
 Once you have generated the FFD with ``simple_ffd.py`` you can try out different design variables by running
 ::
 

@@ -4,19 +4,19 @@
 .. _airfoilopt_multipoint:
 
 
-***************************
+***********************
 Multipoint Optimization
-***************************
+***********************
 
 Introduction
-===============
+============
 Optimization does not have to be limited to a single flight condition. 
 This section goes through the same optimization as the single point case, except with one more flight condition. 
 Instead of rewriting the code from scratch, the differences in code will be pointed out.
 
 
 Files
-===============
+=====
 
 Copy the FFD file, ``ffd.xyz``, and the CGNS mesh file, ``n0012.cgns``, generated previously, into the directory.
 
@@ -26,12 +26,12 @@ Create the following empty runscript in the current directory:
 
 
 Highlighting the changes required in the multipoint optimization script
-========================================================================
+=======================================================================
 Open the file ``airfoil_multiopt.py`` in your favorite text editor.
 Copy the script from ``airfoil_opt.py`` and change the following sections for multipoint optimization.
 
 Specifying parameters for the optimization
---------------------------------------------
+------------------------------------------
 
 For multipoint optimization, the parameters have to be specified in lists of the same size.
 
@@ -74,10 +74,9 @@ Adding the constraints to the optimization problem requires adding them to each 
 
 
 Run it yourself!
-=================
+================
 
-The script can be run in the same way.
-::
+The script can be run in the same way::
 
 	$ mkdir output
 	$ mpirun -np 4 python airfoil_multiopt.py | tee output.txt

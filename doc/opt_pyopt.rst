@@ -32,11 +32,11 @@ Optimization Problem Definition
 We will be solving a constrained Rosenbrock problem defined in the following manner:
 
 | *minimize*
-|    100 (x\ :sub:`1` - x\ :sub:`0`\ :sup:`2` )\ :sup:`2` + (1 - x\ :sub:`0`)\ :sup:`2`
+|    :math:`100(x_1 - x_0^2 )^2 + (1 - x_0)^2`
 | *with respect to*
-|    x\ :sub:`0`, x\ :sub:`1`
+|    :math:`x_0, x_1`
 | *subject to*
-|    0.1 - (x\ :sub:`0` - 1)\ :sup:`3` - (x\ :sub:`1` - 1)
+|    :math:`0.1 - (x_0 - 1)^3 - (x_1 - 1) \le 0`
 
 Dissecting the pyOptSparse runscript
 ================================================================================

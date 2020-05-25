@@ -8,7 +8,7 @@ Drag Polar Analysis with ADflow
 *******************************
 
 Introduction
-================================================================================
+============
 This example is an extension of the previous example "Analysis with ADflow".
 Much of the code used for the two cases is the same, however, we include the full 
 script for completeness. 
@@ -18,7 +18,7 @@ As we go through the code, we will highlight the differences between the this ex
 previous case.
 
 Files
-================================================================================
+=====
 Navigate to the directory ``aero/analysis`` in your tutorial folder.
 If you haven't already done so, copy the following files from the volume meshing directory:
 ::
@@ -31,7 +31,7 @@ Create the following empty runscript in the current directory:
 
 
 Dissecting the ADflow runscript
-================================================================================
+===============================
 Open the file ``aero_run_drag_polar.py`` with your favorite text editor.
 Then copy the code from each of the following sections into this file.
 
@@ -134,9 +134,8 @@ Once we complete the loop and evaluate all of the desired flow conditions, we ca
 
 
 Run it yourself!
-================================================================================
-First make the output directory and then run the script:
-::
+================
+First make the output directory and then run the script::
 
     $ mkdir output
     $ mpirun -np 4 python aero_run_drag_polar.py

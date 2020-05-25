@@ -62,7 +62,6 @@ FFDbox[:, :, 0, 2] = 0.0
 FFDbox[:, :, 1, 2] = 1.0
 
 # rst WriteFile
-# f = open('FFD'+str(nffd)+'.xyz','w')
 f = open("ffd.xyz", "w")
 f.write("1\n")
 f.write(str(nffd) + " 2 2\n")

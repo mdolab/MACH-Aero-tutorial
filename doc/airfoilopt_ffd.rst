@@ -20,16 +20,12 @@ Create the following empty runscript in the current directory.
 
 Import Packages
 ===============
-
-Import numpy and sin, cos, pi, and log from math.
-
 .. literalinclude:: ../tutorial/airfoilopt/ffd/genFFD.py
     :start-after: # rst Import
     :end-before: # rst Load
 
 Load Airfoil
 ============
-	
 .. literalinclude:: ../tutorial/airfoilopt/ffd/genFFD.py
     :start-after: # rst Load
     :end-before: # rst UpperLower

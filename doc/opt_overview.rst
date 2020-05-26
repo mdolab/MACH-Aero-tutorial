@@ -10,7 +10,7 @@ Part 2: Aerodynamic Optimization
 
 
 Overview
-================================================================================
+========
 In this part of the tutorial, we will demonstrate how to optimize the design of an aircraft with gradient-based optimization algorithms.
 One of the singular attributes of the AeroOpt framework is that it was specifically designed for the purpose of conducting gradient-based optimization studies.
 (For a simple demonstration of why we use gradient-based optimization, check out `pyGame <http://mdolab.engin.umich.edu/pyGame/>`_.)
@@ -29,7 +29,7 @@ Here are a few of the items we will cover in the following pages:
     - Run single-point and multi-point aerodynamic shape optimizations
 
 Table of Contents
-================================================================================
+=================
 
 .. toctree::
    :maxdepth: 1
@@ -39,7 +39,7 @@ Table of Contents
    opt_aero
 
 Directory Structure
-================================================================================
+===================
 ::
 
     opt

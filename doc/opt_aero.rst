@@ -9,21 +9,21 @@ Aerodynamic Optimization
 ************************
 
 Introduction
-================================================================================
+============
 We will now demonstrate how to optimize the aerodynamic shape of a wing.
 We will be combining aspects of all of the following sections: :ref:`aero_adflow`, :ref:`opt_pyopt`, and :ref:`opt_ffd`.
 The optimization problem is defined as
 
 | *minimize*
-|    C\ :sub:`D`
+|    :math:`C_D`
 | *with respect to*
 |    7 twist variables
 |    96 shape variables
 | *subject to*
-|    C\ :sub:`L` = 0.5
+|    :math:`C_L = 0.5`
 
 Files
-================================================================================
+=====
 Navigate to the directory ``opt/aero`` in your tutorial folder.
 Copy the following files from the MACH_Aero_Tutorials repository:
 ::
@@ -36,15 +36,15 @@ Create the following empty runscript in the current directory:
 - ``aero_opt.py``
 
 Dissecting the aerodynamic optimization script
-================================================================================
+==============================================
 Open the file ``aero_opt.py`` in your favorite text editor.
 Then copy the code from each of the following sections into this file.
 
 Import libraries
 ----------------
 .. literalinclude:: ../tutorial/opt/aero/aero_opt.py
-    :start-after: #rst Imports (beg)
-    :end-before: #rst Imports (end)
+    :start-after: # rst Imports (beg)
+    :end-before: # rst Imports (end)
 
 The multipoint library is the only new library to include in this script.
 
@@ -55,8 +55,8 @@ This can be helpful if we want to consider multiple design points, each with a d
 In this case, we create a processor set for cruise cases, but we only add one point.
 
 .. literalinclude:: ../tutorial/opt/aero/aero_opt.py
-    :start-after: #rst multipoint (beg)
-    :end-before: #rst multipoint (end)
+    :start-after: # rst multipoint (beg)
+    :end-before: # rst multipoint (end)
 
 If we want to add more points, we can increase the quantity ``nMembers``.
 We can choose the number of processors per point with the argument ``memberSizes``.
@@ -69,14 +69,14 @@ The set-up for adflow should look the same as for the aerodynamic analysis scrip
 We add a single lift distribution with 200 sampling points.
 
 .. literalinclude:: ../tutorial/opt/aero/aero_opt.py
-    :start-after: #rst adflow (beg)
-    :end-before: #rst adflow (end)
+    :start-after: # rst adflow (beg)
+    :end-before: # rst adflow (end)
 
 Set the AeroProblem
 -------------------
 .. literalinclude:: ../tutorial/opt/aero/aero_opt.py
-    :start-after: #rst aeroproblem (beg)
-    :end-before: #rst aeroproblem (end)
+    :start-after: # rst aeroproblem (beg)
+    :end-before: # rst aeroproblem (end)
 
 The only difference in setting up the AeroProblem is that now we add angle-of-attack as a design variable.
 Any of the quantities included in the initialization of the AeroProblem can be added as design variables.
@@ -88,8 +88,8 @@ We include twist and local variables in the optimization.
 After setting up the DVGeometry instance we have to provide it to ADflow with the call ``setDVGeo``.
 
 .. literalinclude:: ../tutorial/opt/aero/aero_opt.py
-    :start-after: #rst dvgeo (beg)
-    :end-before: #rst dvgeo (end)
+    :start-after: # rst dvgeo (beg)
+    :end-before: # rst dvgeo (end)
 
 Geometric constraints
 ---------------------
@@ -102,21 +102,21 @@ For the volume constraint, the 2D grid is transformed into a 3D grid bounded by 
 The volume is computed by adding up the volumes of the cells that make up the 3D grid.
 For the thickness constraints, the nodes of the 2D grid are projected to the upper and lower surface of the wing
 The thickness for a given node is the difference between its upper and lower projections.
-More information on the options can be found in the `pyGeo docs <http://mdolab.engin.umich.edu/docs/packages/pygeo/doc/index.html>`_ or by looking at the pyGeo source code.
+More information on the options can be found in the `pyGeo docs <https://mdolab-pygeo.readthedocs-hosted.com/>`_ or by looking at the pyGeo source code.
 
 The LeTe constraints (short for Leading edge/Trailing edge) are linear constraints based on the FFD control points.
 When we have both twist and local shape variables, we want to prevent the local shape variables from creating a shearing twist.
 This is done by constraining that the upper and lower nodes on the leading and trailing edges must move in opposite directions.
 
 .. literalinclude:: ../tutorial/opt/aero/aero_opt.py
-    :start-after: #rst dvcon (beg)
-    :end-before: #rst dvcon (end)
+    :start-after: # rst dvcon (beg)
+    :end-before: # rst dvcon (end)
 
 Mesh warping set-up
 -------------------
 .. literalinclude:: ../tutorial/opt/aero/aero_opt.py
-    :start-after: #rst warp (beg)
-    :end-before: #rst warp (end)
+    :start-after: # rst warp (beg)
+    :end-before: # rst warp (end)
 
 Optimization callback functions
 -------------------------------
@@ -125,8 +125,8 @@ In this case ``cruiseFuncs`` and ``cruiseFuncsSens`` belong to the ``cruise`` pr
 Then we need to set up an objCon function, which is used to create abstract functions of other functions.
 
 .. literalinclude:: ../tutorial/opt/aero/aero_opt.py
-    :start-after: #rst funcs (beg)
-    :end-before: #rst funcs (end)
+    :start-after: # rst funcs (beg)
+    :end-before: # rst funcs (end)
 
 Now we will explain each of these callback functions.
 
@@ -149,9 +149,7 @@ objCon
 ~~~~~~
 The main input to the ``objCon`` callback function is the dictionary of functions (which is a compilation of all the ``funcs`` dictionaries from each of the design points).
 Inside ``objCon``, the user can define functionals (or functions of other functions).
-For instance, to maximize L/D, you could define the objective function as
-
-::
+For instance, to maximize L/D, you could define the objective function as::
 
     funcs['obj'] = funcs['cl'] / funcs['cd']
 
@@ -174,20 +172,19 @@ We also need to provide it with the objCon and the optProb.
 The call ``optProb.printSparsity()`` prints out the constraint Jacobian at the beginning of the optimization.
 
 .. literalinclude:: ../tutorial/opt/aero/aero_opt.py
-    :start-after: #rst optprob (beg)
-    :end-before: #rst optprob (end)
+    :start-after: # rst optprob (beg)
+    :end-before: # rst optprob (end)
 
 Run optimization
 ----------------
 To finish up, we choose the optimizer and then run the optimization.
 
 .. literalinclude:: ../tutorial/opt/aero/aero_opt.py
-    :start-after: #rst optimizer
+    :start-after: # rst optimizer
 
 Run it yourself!
-================================================================================
-To run the script, use the ``mpirun`` and place the total number of processors after the ``-np`` argument.
-::
+================
+To run the script, use the ``mpirun`` and place the total number of processors after the ``-np`` argument::
 
     $ mpirun -np 4 python aero_opt.py
 

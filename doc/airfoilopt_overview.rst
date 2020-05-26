@@ -4,13 +4,13 @@
 
 .. _airfoilopt_overview:
 
-###############################
+############################
 Part 3: Airfoil Optimization
-###############################
+############################
 
 
 Overview
-================================================================================
+========
 In this part of the tutorial, we will go through an example of an airfoil optimization. The process is similar to that of the previous sections, but less complicated.
 
 Here are a few of the items we will cover in the following pages:
@@ -24,7 +24,7 @@ Here are a few of the items we will cover in the following pages:
     - Run a multi-point aerodynamic shape optimization
 
 Table of Contents
-================================================================================
+=================
 
 .. toctree::
    :maxdepth: 1
@@ -35,7 +35,7 @@ Table of Contents
    airfoilopt_multipoint
 
 Directory Structure
-================================================================================
+===================
 ::
 
     opt

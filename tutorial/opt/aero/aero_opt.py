@@ -1,8 +1,8 @@
 # ======================================================================
 #         Import modules
 # ======================================================================
-#rst Imports (beg)
-from __future__ import print_function
+# rst Imports (beg)
+import os
 from mpi4py import MPI
 from baseclasses import AeroProblem
 from adflow import ADFLOW
@@ -10,101 +10,92 @@ from pygeo import DVGeometry, DVConstraints
 from pyoptsparse import Optimization, OPT
 from idwarp import USMesh
 from multipoint import multiPointSparse
-#rst Imports (end)
+
+# rst Imports (end)
 # ======================================================================
 #         Create multipoint communication object
 # ======================================================================
-#rst multipoint (beg)
+# rst multipoint (beg)
 MP = multiPointSparse(MPI.COMM_WORLD)
-MP.addProcessorSet('cruise', nMembers=1, memberSizes=4)
+MP.addProcessorSet("cruise", nMembers=1, memberSizes=MPI.COMM_WORLD.size)
 comm, setComm, setFlags, groupFlags, ptID = MP.createCommunicators()
-#rst multipoint (end)
+outputDirectory = "output"
+if comm.rank == 0:
+    os.mkdir(outputDirectory)
+# rst multipoint (end)
 # ======================================================================
 #         ADflow Set-up
 # ======================================================================
-#rst adflow (beg)
-gridFile = 'wing_vol.cgns'
+# rst adflow (beg)
+gridFile = "wing_vol.cgns"
 aeroOptions = {
     # I/O Parameters
-    'gridFile':gridFile,
-    'outputDirectory':'.',
-    'monitorvariables':['resrho','cl','cd'],
-    'writeTecplotSurfaceSolution':True,
-
+    "gridFile": gridFile,
+    "outputDirectory": outputDirectory,
+    "monitorvariables": ["resrho", "cl", "cd"],
+    "writeTecplotSurfaceSolution": True,
     # Physics Parameters
-    'equationType':'RANS',
-
+    "equationType": "RANS",
     # Solver Parameters
-    'smoother':'dadi',
-    'CFL':1.5,
-    'CFLCoarse':1.25,
-    'MGCycle':'3w',
-    'MGStartLevel':-1,
-    'nCyclesCoarse':250,
-
+    "smoother": "dadi",
+    "MGCycle": "sg",
+    "infchangecorrection": True,
     # ANK Solver Parameters
-    'useANKSolver':True,
-    'ankswitchtol':1e-1,
-    'anksecondordswitchtol':1e-2,
-    'ankcoupledswitchtol':1e-5,
-
+    "useANKSolver": True,
     # NK Solver Parameters
-    'useNKSolver':True,
-    'nkswitchtol':1e-6,
-
+    "useNKSolver": True,
+    "nkswitchtol": 1e-6,
     # Termination Criteria
-    'L2Convergence':1e-10,
-    'L2ConvergenceCoarse':1e-2,
-    'nCycles':10000,
-
+    "L2Convergence": 1e-10,
+    "L2ConvergenceCoarse": 1e-2,
+    "nCycles": 10000,
     # Adjoint Parameters
-    'adjointL2Convergence':1e-10,
+    "adjointL2Convergence": 1e-10,
 }
 
 # Create solver
 CFDSolver = ADFLOW(options=aeroOptions, comm=comm)
-CFDSolver.addLiftDistribution(200, 'z')
-#rst adflow (end)
+CFDSolver.addLiftDistribution(200, "z")
+# rst adflow (end)
 # ======================================================================
 #         Set up flow conditions with AeroProblem
 # ======================================================================
-#rst aeroproblem (beg)
-ap = AeroProblem(name='fc', alpha=1.5, mach=0.8, altitude=10000,
-                 areaRef=45.5, chordRef=3.25, evalFuncs=['cl','cd'])
+# rst aeroproblem (beg)
+ap = AeroProblem(name="fc", alpha=1.5, mach=0.8, altitude=10000, areaRef=45.5, chordRef=3.25, evalFuncs=["cl", "cd"])
 
 # Add angle of attack variable
-ap.addDV('alpha', value=1.5, lower=0, upper=10.0, scale=0.1)
-#rst aeroproblem (end)
+ap.addDV("alpha", value=1.5, lower=0, upper=10.0, scale=0.1)
+# rst aeroproblem (end)
 # ======================================================================
 #         Geometric Design Variable Set-up
 # ======================================================================
-#rst dvgeo (beg)
+# rst dvgeo (beg)
 # Create DVGeometry object
-FFDFile = 'ffd.xyz'
+FFDFile = "ffd.xyz"
 DVGeo = DVGeometry(FFDFile)
 
 # Create reference axis
-nRefAxPts = DVGeo.addRefAxis('wing', xFraction=0.25, alignIndex='k')
+nRefAxPts = DVGeo.addRefAxis("wing", xFraction=0.25, alignIndex="k")
 nTwist = nRefAxPts - 1
 
 # Set up global design variables
 def twist(val, geo):
     for i in range(1, nRefAxPts):
-        geo.rot_z['wing'].coef[i] = val[i-1]
+        geo.rot_z["wing"].coef[i] = val[i - 1]
 
-DVGeo.addGeoDVGlobal(dvName='twist', value=[0]*nTwist, func=twist,
-                    lower=-10, upper=10, scale=0.01)
+
+DVGeo.addGeoDVGlobal(dvName="twist", value=[0] * nTwist, func=twist, lower=-10, upper=10, scale=0.01)
 
 # Set up local design variables
-DVGeo.addGeoDVLocal('local', lower=-0.5, upper=0.5, axis='y', scale=1)
+DVGeo.addGeoDVLocal("local", lower=-0.5, upper=0.5, axis="y", scale=1)
 
 # Add DVGeo object to CFD solver
 CFDSolver.setDVGeo(DVGeo)
-#rst dvgeo (end)
+# rst dvgeo (end)
 # ======================================================================
 #         DVConstraint Setup
 # ======================================================================
-#rst dvcon (beg)
+# rst dvcon (beg)
 DVCon = DVConstraints()
 DVCon.setDVGeo(DVGeo)
 
@@ -120,24 +111,24 @@ DVCon.addVolumeConstraint(leList, teList, 20, 20, lower=1.0)
 DVCon.addThicknessConstraints2D(leList, teList, 10, 10, lower=1.0)
 
 # Le/Te constraints
-DVCon.addLeTeConstraints(0, 'iLow')
-DVCon.addLeTeConstraints(0, 'iHigh')
+DVCon.addLeTeConstraints(0, "iLow")
+DVCon.addLeTeConstraints(0, "iHigh")
 
 if comm.rank == 0:
-    DVCon.writeTecplot('constraints.dat')
-#rst dvcon (end)
+    DVCon.writeTecplot(os.path.join(outputDirectory, "constraints.dat"))
+# rst dvcon (end)
 # ======================================================================
 #         Mesh Warping Set-up
 # ======================================================================
-#rst warp (beg)
-meshOptions = {'gridFile':gridFile}
+# rst warp (beg)
+meshOptions = {"gridFile": gridFile}
 mesh = USMesh(options=meshOptions, comm=comm)
 CFDSolver.setMesh(mesh)
-#rst warp (end)
+# rst warp (end)
 # ======================================================================
 #         Functions:
 # ======================================================================
-#rst funcs (beg)
+# rst funcs (beg)
 def cruiseFuncs(x):
     if comm.rank == 0:
         print(x)
@@ -155,6 +146,7 @@ def cruiseFuncs(x):
         print(funcs)
     return funcs
 
+
 def cruiseFuncsSens(x, funcs):
     funcsSens = {}
     DVCon.evalFunctionsSens(funcsSens)
@@ -163,23 +155,26 @@ def cruiseFuncsSens(x, funcs):
         print(funcsSens)
     return funcsSens
 
+
 def objCon(funcs, printOK):
     # Assemble the objective and any additional constraints:
-    funcs['obj'] = funcs[ap['cd']]
-    funcs['cl_con_'+ap.name] = funcs[ap['cl']] - 0.5
+    funcs["obj"] = funcs[ap["cd"]]
+    funcs["cl_con_" + ap.name] = funcs[ap["cl"]] - 0.5
     if printOK:
-       print('funcs in obj:', funcs)
+        print("funcs in obj:", funcs)
     return funcs
-#rst funcs (end)
+
+
+# rst funcs (end)
 # ======================================================================
 #         Optimization Problem Set-up
 # ======================================================================
-#rst optprob (beg)
+# rst optprob (beg)
 # Create optimization problem
-optProb = Optimization('opt', MP.obj, comm=comm)
+optProb = Optimization("opt", MP.obj, comm=comm)
 
 # Add objective
-optProb.addObj('obj', scale=1e2)
+optProb.addObj("obj", scale=1e2)
 
 # Add variables from the AeroProblem
 ap.addVariablesPyOpt(optProb)
@@ -189,28 +184,35 @@ DVGeo.addVariablesPyOpt(optProb)
 
 # Add constraints
 DVCon.addConstraintsPyOpt(optProb)
-optProb.addCon('cl_con_'+ap.name, lower=0.0, upper=0.0, scale=10.0)
+optProb.addCon("cl_con_" + ap.name, lower=0.0, upper=0.0, scale=10.0)
 
 # The MP object needs the 'obj' and 'sens' function for each proc set,
 # the optimization problem and what the objcon function is:
-MP.setProcSetObjFunc('cruise', cruiseFuncs)
-MP.setProcSetSensFunc('cruise', cruiseFuncsSens)
+MP.setProcSetObjFunc("cruise", cruiseFuncs)
+MP.setProcSetSensFunc("cruise", cruiseFuncsSens)
 MP.setObjCon(objCon)
 MP.setOptProb(optProb)
 optProb.printSparsity()
-#rst optprob (end)
-#rst optimizer
+# rst optprob (end)
+# rst optimizer
 # Set up optimizer
-optOptions = {
-    'Major feasibility tolerance':1.0e-4,
-    'Major optimality tolerance':1.0e-4,
-    'Difference interval':1e-3,
-    'Hessian full memory':None,
-    'Function precision':1.0e-8
-}
-opt = OPT('snopt', options=optOptions)
+optimizer = "SLSQP"
+if optimizer == "SLSQP":
+    optOptions = {"IFILE": os.path.join(outputDirectory, "SLSQP.out")}
+    opt = OPT("slsqp", options=optOptions)
+elif optimizer == "SNOPT":
+    optOptions = {
+        "Major feasibility tolerance": 1e-4,
+        "Major optimality tolerance": 1e-4,
+        "Difference interval": 1e-3,
+        "Hessian full memory": None,
+        "Function precision": 1e-8,
+        "Print file": os.path.join(outputDirectory, "SNOPT_print.out"),
+        "Summary file": os.path.join(outputDirectory, "SNOPT_summary.out"),
+    }
+    opt = OPT("snopt", options=optOptions)
 
 # Run Optimization
-sol = opt(optProb, MP.sens, storeHistory='opt.hst')
+sol = opt(optProb, MP.sens, storeHistory=os.path.join(outputDirectory, "opt.hst"))
 if comm.rank == 0:
-   print(sol)
+    print(sol)

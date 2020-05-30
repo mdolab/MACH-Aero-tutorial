@@ -1,8 +1,8 @@
 .. _opt_overview:
 
-################################
-Part 2: Aerodynamic Optimization
-################################
+########################
+Aerodynamic Optimization
+########################
 
 
 Overview
@@ -24,11 +24,9 @@ Here are a few of the items we will cover in the following pages:
 
     - Run single-point and multi-point aerodynamic shape optimizations
 
-Table of Contents
-=================
-
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    opt_pyopt
    opt_ffd

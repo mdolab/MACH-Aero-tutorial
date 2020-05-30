@@ -1,8 +1,8 @@
 .. _aero_overview:
 
-############################
-Part 1: Aerodynamic Analysis
-############################
+####################
+Aerodynamic Analysis
+####################
 
 Overview
 ========
@@ -24,11 +24,9 @@ In order to analyze a geometry with ADflow, we need to take the following steps:
     Since ADflow is a script-based software, it is important to understand the elements of an ADflow runscript.
     Additionally, there are many settings that can be adjusted to make ADflow perform better for a given case.
 
-Table of Contents
-=================
-
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    aero_pygeo
    aero_icem

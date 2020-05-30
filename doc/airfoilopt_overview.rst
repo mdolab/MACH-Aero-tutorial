@@ -1,8 +1,8 @@
 .. _airfoilopt_overview:
 
-############################
-Part 3: Airfoil Optimization
-############################
+####################
+Airfoil Optimization
+####################
 
 
 Overview
@@ -19,11 +19,9 @@ Here are a few of the items we will cover in the following pages:
 
     - Run a multi-point aerodynamic shape optimization
 
-Table of Contents
-=================
-
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    airfoilopt_mesh
    airfoilopt_ffd

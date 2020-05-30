@@ -5,7 +5,7 @@ MACH-Aero Tutorials
 ###################
 
 Introduction
-================================================================================
+============
 The `MDOlab <http://mdolab.engin.umich.edu>`_ at the University of Michigan has developed the MDO of aircraft configurations with high fidelity (MACH) framework.
 This tutorial was written to help new users become familiar with the tools and workflow of MACH for aerodynamic shape optimization and the common practices of more experienced users.
 Most of the tools in the MACH framework are written with Python, although many of the tools incorporate Fortran code to handle operations that require speed.
@@ -35,7 +35,6 @@ If not, follow the instructions for installing the MDOLab framework from `scratc
 .. toctree::
    :caption: MACH-Aero Tutorial
    :maxdepth: 2
-   :hidden:
 
    aero_overview
    opt_overview

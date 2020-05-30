@@ -3,10 +3,6 @@
 ####################
 Airfoil Optimization
 ####################
-
-
-Overview
-========
 In this part of the tutorial, we will go through an example of an airfoil optimization. The process is similar to that of the previous sections, but less complicated.
 
 Here are a few of the items we will cover in the following pages:
@@ -21,16 +17,13 @@ Here are a few of the items we will cover in the following pages:
 
 .. toctree::
    :maxdepth: 1
-   :hidden:
 
    airfoilopt_mesh
    airfoilopt_ffd
    airfoilopt_singlepoint
    airfoilopt_multipoint
 
-Directory Structure
-===================
-::
+**Directory Structure**::
 
     opt
     |-- meshing

@@ -43,8 +43,8 @@ If not, follow the instructions for installing the MDOLab framework from `scratc
 Required Software
 =================
 
-Made in the MDOlab
-------------------
+**Made in the MDOlab**
+
 * `ADflow <https://github.com/mdolab/adflow>`_
 * `pyGeo <https://github.com/mdolab/pygeo>`_
 * `pySpline <https://github.com/mdolab/pyspline>`_
@@ -58,9 +58,9 @@ Made in the MDOlab
 Note: These links take you to the GitHub repositories.
 To see their documentation instead, go back to the main documentation `page <http://mdolab.engin.umich.edu/docs/index.html>`_.
 
-External Software
------------------
-* ICEM CFD
+**External Software**
+
+* ICEM CFD (for surface mesh generation)
 * Tecplot (for visualization)
 
 Documentation strategy
@@ -83,5 +83,4 @@ Please adopt this same convention for any future developments to the tutorial.
 
 Future Work
 ===========
-
 - Add explanation of pyOptSparse and OptView.

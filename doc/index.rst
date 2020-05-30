@@ -80,7 +80,3 @@ We adopt the convention of using ``#rst <section subject>`` as the marker for th
     #rst Simple addition (end)
 
 Please adopt this same convention for any future developments to the tutorial.
-
-Future Work
-===========
-- Add explanation of pyOptSparse and OptView.

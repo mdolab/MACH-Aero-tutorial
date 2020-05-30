@@ -15,6 +15,9 @@ Here are a few of the items we will cover in the following pages:
 
     - Run a multi-point aerodynamic shape optimization
 
+Table of Contents
+=================
+
 .. toctree::
    :maxdepth: 1
 
@@ -23,7 +26,9 @@ Here are a few of the items we will cover in the following pages:
    airfoilopt_singlepoint
    airfoilopt_multipoint
 
-**Directory Structure**::
+Directory Structure
+===================
+::
 
     opt
     |-- meshing

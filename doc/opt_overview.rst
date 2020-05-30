@@ -18,6 +18,9 @@ Here are a few of the items we will cover in the following pages:
     - Parametrize a 3D geometry using the Free-form Deformation method
     - Run single-point and multi-point aerodynamic shape optimizations
 
+Table of Contents
+=================
+
 .. toctree::
    :maxdepth: 1
 
@@ -25,7 +28,9 @@ Here are a few of the items we will cover in the following pages:
    opt_ffd
    opt_aero
 
-**Directory Structure**::
+Directory Structure
+===================
+::
 
     opt
     |-- pyoptsparse

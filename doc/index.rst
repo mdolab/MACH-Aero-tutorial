@@ -32,8 +32,11 @@ Before continuing with the tutorial, make sure that the MDOLab framework is alre
 If you set up your machine using an MDOLab iso, then the required packages should already be installed.
 If not, follow the instructions for installing the MDOLab framework from `scratch <http://mdolab.engin.umich.edu/docs/installInstructions/installFromScratch.html>`_.
 
+Table of Contents
+=================
+
 .. toctree::
-   :caption: MACH-Aero Tutorial
+   :titlesonly:
    :maxdepth: 2
 
    aero_overview

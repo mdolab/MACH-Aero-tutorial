@@ -21,6 +21,9 @@ In order to analyze a geometry with ADflow, we need to take the following steps:
     Since ADflow is a script-based software, it is important to understand the elements of an ADflow runscript.
     Additionally, there are many settings that can be adjusted to make ADflow perform better for a given case.
 
+Table of Contents
+=================
+
 .. toctree::
    :maxdepth: 1
 
@@ -31,7 +34,9 @@ In order to analyze a geometry with ADflow, we need to take the following steps:
    aero_adflow
    aero_adflow_polar
 
-**Directory Structure**::
+Directory Structure
+===================
+::
 
     aero
     |-- geometry

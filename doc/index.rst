@@ -38,6 +38,7 @@ Table of Contents
 .. toctree::
    :caption: MACH-Aero Tutorial
    :maxdepth: 2
+   :hidden:
 
    aero_overview
    opt_overview

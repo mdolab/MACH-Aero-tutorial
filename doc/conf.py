@@ -30,11 +30,8 @@ import os
 # ones.
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode',
     # 'numpydoc',
-    # 'sphinxcontrib.blockdiag',
     # 'rst2pdf.pdfbuilder',
     'sphinx.ext.graphviz']
-
-blockdiag_fontpath = '/usr/share/fonts/truetype/freefont/FreeSans.ttf'
 
 numpydoc_show_class_members = False
 
@@ -115,7 +112,7 @@ todo_include_todos = False
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'mdolab_theme'
+# html_theme = 'mdolab_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -259,10 +256,10 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [
-    (master_doc, 'tutorial-wing', u'Tutorial-wing Documentation',
-     [author], 1)
-]
+# man_pages = [
+#     (master_doc, 'tutorial-wing', u'Tutorial-wing Documentation',
+#      [author], 1)
+# ]
 
 # If true, show URL addresses after external links.
 #man_show_urls = False
@@ -273,11 +270,11 @@ man_pages = [
 # Grouping the document tree into Texinfo files. List of tuples
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
-texinfo_documents = [
-    (master_doc, 'Tutorial-wing', u'Tutorial-wing Documentation',
-     author, 'Tutorial-wing', 'One line description of project.',
-     'Miscellaneous'),
-]
+# texinfo_documents = [
+#     (master_doc, 'Tutorial-wing', u'Tutorial-wing Documentation',
+#      author, 'Tutorial-wing', 'One line description of project.',
+#      'Miscellaneous'),
+# ]
 
 # Documents to append as an appendix to all manuals.
 #texinfo_appendices = []

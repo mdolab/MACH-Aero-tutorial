@@ -1,8 +1,4 @@
 
-
-.. centered::
-    :ref:`aero_pyhyp` | :ref:`aero_adflow`
-
 .. _aero_cgnsutils:
 
 ***********************
@@ -48,5 +44,3 @@ CGNS Viewer can be run from the terminal with the command
 
 More details to come later.
 
-.. centered::
-    :ref:`aero_pyhyp` | :ref:`aero_adflow`

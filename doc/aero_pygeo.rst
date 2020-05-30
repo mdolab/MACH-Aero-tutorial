@@ -1,7 +1,3 @@
-
-.. centered::
-    :ref:`aero_overview` | :ref:`aero_icem`
-
 .. _aero_pygeo:
 
 *******************
@@ -109,6 +105,3 @@ After copying ``rae2822.dat`` to your ``aero/geometry`` folder and making the ``
     $ python generate_wing.py
 
 You can open ``wing.dat`` in Tecplot to view the wing surface.
-
-.. centered::
-    :ref:`aero_overview` | :ref:`aero_icem`

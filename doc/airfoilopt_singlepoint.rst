@@ -1,6 +1,3 @@
-.. centered::
-   :ref:`airfoilopt_ffd` | :ref:`airfoilopt_multipoint`
-
 .. _airfoilopt_singlepoint:
 
 
@@ -217,7 +214,3 @@ To run the script, use the ``mpirun`` and place the total number of processors a
 
 The command ``tee`` saves the text outputs of the optimization to the specified text file.
 You can follow the progress of the optimization using OptView, as explained in pyOptSparse.
-
-
-.. centered::
-   :ref:`airfoilopt_ffd` | :ref:`airfoilopt_multipoint`

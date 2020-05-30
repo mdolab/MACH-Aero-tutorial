@@ -1,6 +1,3 @@
-.. centered::
-   :ref:`airfoilopt_mesh` | :ref:`airfoilopt_singlepoint`
-
 .. _airfoilopt_ffd:
 
 
@@ -71,7 +68,3 @@ Writing to File
 
 
 The above script writes the FFD coordinates to a PLOT3D ``.xyz`` file, which will be used for optimization.
-
-
-.. centered::
-   :ref:`airfoilopt_mesh` | :ref:`airfoilopt_singlepoint`

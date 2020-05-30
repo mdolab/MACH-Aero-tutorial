@@ -1,7 +1,3 @@
-
-.. centered::
-   :ref:`intro` | :ref:`airfoilopt_mesh`
-
 .. _airfoilopt_overview:
 
 ############################
@@ -47,6 +43,3 @@ Directory Structure
     |   |-- airfoil_opt.py
     |-- multipoint opt
     |   |-- airfoil_multiopt.py
-
-.. centered::
-    :ref:`intro` | :ref:`airfoilopt_mesh`

@@ -1,7 +1,3 @@
-
-.. centered::
-    :ref:`intro` | :ref:`aero_pygeo`
-
 .. _aero_overview:
 
 ############################
@@ -55,6 +51,3 @@ Directory Structure
     |       |-- extrude.py
     |-- analysis
         |-- aero_run.py
-
-.. centered::
-    :ref:`intro` | :ref:`aero_pygeo`

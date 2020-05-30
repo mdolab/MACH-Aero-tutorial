@@ -1,7 +1,3 @@
-
-.. centered::
-   :ref:`intro` | :ref:`opt_pyopt`
-
 .. _opt_overview:
 
 ################################
@@ -53,5 +49,3 @@ Directory Structure
     |-- aero
     |   |-- aero_opt.py
 
-.. centered::
-    :ref:`intro` | :ref:`opt_pyopt`

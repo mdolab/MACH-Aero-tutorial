@@ -1,7 +1,3 @@
-
-.. centered::
-   :ref:`opt_pyopt` | :ref:`opt_aero`
-
 .. _opt_ffd:
 
 *************************
@@ -282,6 +278,3 @@ The following shows the deformed (darker points) and undeformed surface coordina
    :align: center
 
 Experiment with creating new global design variables like span or sweep.
-
-.. centered::
-    :ref:`opt_pyopt` | :ref:`opt_aero`

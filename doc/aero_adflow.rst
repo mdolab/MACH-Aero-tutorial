@@ -1,7 +1,3 @@
-
-.. centered::
-    :ref:`aero_cgnsutils` | :ref:`aero_adflow_polar`
-
 .. _aero_adflow:
 
 ********************
@@ -108,5 +104,3 @@ First make the output directory and then run the script::
     $ mkdir output
     $ mpirun -np 4 python aero_run.py
 
-.. centered::
-    :ref:`aero_cgnsutils` | :ref:`aero_adflow_polar`

@@ -32,19 +32,9 @@ Before continuing with the tutorial, make sure that the MDOLab framework is alre
 If you set up your machine using an MDOLab iso, then the required packages should already be installed.
 If not, follow the instructions for installing the MDOLab framework from `scratch <http://mdolab.engin.umich.edu/docs/installInstructions/installFromScratch.html>`_.
 
-Table of Contents
-================================================================================
-
-.. toctree::
-   :maxdepth: 2
-   :titlesonly:
-
-   aero_overview
-   opt_overview
-   airfoilopt_overview
 
 Required Software
-================================================================================
+=================
 
 Made in the MDOlab
 ------------------
@@ -67,7 +57,7 @@ External Software
 * Tecplot (for visualization)
 
 Documentation strategy
-================================================================================
+======================
 The tutorial resides on `GitHub <https://github.com/mdolab/MACH-Aero-tutorial/>`_, but it is a living tutorial, which means that it is constantly updated with corrections and improvements.
 We invite you, especially as a new user, to take notes of the parts that you find confusing and bring them to the attention of an admin to the tutorial repository so that changes can be made.
 
@@ -85,5 +75,6 @@ We adopt the convention of using ``#rst <section subject>`` as the marker for th
 Please adopt this same convention for any future developments to the tutorial.
 
 Future Work
-================================================================================
-Add explanation of pyOptSparse and OptView.
+===========
+
+- Add explanation of pyOptSparse and OptView.

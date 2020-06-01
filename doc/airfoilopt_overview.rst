@@ -1,16 +1,8 @@
-
-.. centered::
-   :ref:`intro` | :ref:`airfoilopt_mesh`
-
 .. _airfoilopt_overview:
 
-############################
-Part 3: Airfoil Optimization
-############################
-
-
-Overview
-========
+####################
+Airfoil Optimization
+####################
 In this part of the tutorial, we will go through an example of an airfoil optimization. The process is similar to that of the previous sections, but less complicated.
 
 Here are a few of the items we will cover in the following pages:
@@ -47,6 +39,3 @@ Directory Structure
     |   |-- airfoil_opt.py
     |-- multipoint opt
     |   |-- airfoil_multiopt.py
-
-.. centered::
-    :ref:`intro` | :ref:`airfoilopt_mesh`

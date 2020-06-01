@@ -1,15 +1,8 @@
-
-.. centered::
-    :ref:`intro` | :ref:`aero_pygeo`
-
 .. _aero_overview:
 
-############################
-Part 1: Aerodynamic Analysis
-############################
-
-Overview
-========
+####################
+Aerodynamic Analysis
+####################
 High-fidelity aerodynamic analysis in the MDOlab is done using `ADflow <https://bitbucket.org/mdolab/adflow>`_.
 ADflow is a finite-volume CFD solver for cell-centered multiblock and overset meshes.
 ADflow solves the compressible Euler, laminar Navier--Stokes, and RANS equations with a second-order accurate spatial discretization.
@@ -55,6 +48,3 @@ Directory Structure
     |       |-- extrude.py
     |-- analysis
         |-- aero_run.py
-
-.. centered::
-    :ref:`intro` | :ref:`aero_pygeo`

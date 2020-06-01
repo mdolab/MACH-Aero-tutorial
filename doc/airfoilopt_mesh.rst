@@ -1,6 +1,3 @@
-.. centered::
-   :ref:`airfoilopt_overview` | :ref:`airfoilopt_ffd`
-
 .. _airfoilopt_mesh:
 
 
@@ -90,8 +87,3 @@ The following three lines of code extrude the surface mesh and write the resulti
 
 .. literalinclude:: ../tutorial/airfoilopt/mesh/genMesh.py
     :start-after: # rst Run
-
-
-
-.. centered::
-   :ref:`airfoilopt_overview` | :ref:`airfoilopt_ffd`

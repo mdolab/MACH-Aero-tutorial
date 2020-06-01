@@ -1,7 +1,3 @@
-
-.. centered::
-    :ref:`aero_icem` | :ref:`aero_cgnsutils`
-
 .. _aero_pyhyp:
 
 **************
@@ -123,6 +119,3 @@ This can be done with the command:
 
 where the number of processors is given after ``-np``.
 You can open ``wing_vol.cgns`` in Tecplot to view the volume mesh.
-
-.. centered::
-    :ref:`aero_icem` | :ref:`aero_cgnsutils`

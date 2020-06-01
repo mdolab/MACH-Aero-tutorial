@@ -1,7 +1,3 @@
-
-.. centered::
-    :ref:`opt_overview` | :ref:`opt_ffd`
-
 .. _opt_pyopt:
 
 ***********
@@ -202,6 +198,3 @@ You can run it with the command:
 ::
 
     $ python <path-to-pyoptsparse>/postprocessing/OptView.py opt.hst
-
-.. centered::
-    :ref:`opt_overview` | :ref:`opt_ffd`

@@ -1,6 +1,3 @@
-.. centered::
-    :ref:`aero_adflow` | :ref:`intro`
-
 .. _aero_adflow_polar:
 
 *******************************
@@ -139,6 +136,3 @@ First make the output directory and then run the script::
 
     $ mkdir output
     $ mpirun -np 4 python aero_run_drag_polar.py
-
-.. centered::
-    :ref:`aero_adflow` | :ref:`intro`

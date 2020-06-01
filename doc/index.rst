@@ -5,7 +5,7 @@ MACH-Aero Tutorials
 ###################
 
 Introduction
-================================================================================
+============
 The `MDOlab <http://mdolab.engin.umich.edu>`_ at the University of Michigan has developed the MDO of aircraft configurations with high fidelity (MACH) framework.
 This tutorial was written to help new users become familiar with the tools and workflow of MACH for aerodynamic shape optimization and the common practices of more experienced users.
 Most of the tools in the MACH framework are written with Python, although many of the tools incorporate Fortran code to handle operations that require speed.
@@ -33,21 +33,21 @@ If you set up your machine using an MDOLab iso, then the required packages shoul
 If not, follow the instructions for installing the MDOLab framework from `scratch <http://mdolab.engin.umich.edu/docs/installInstructions/installFromScratch.html>`_.
 
 Table of Contents
-================================================================================
+=================
 
 .. toctree::
-   :maxdepth: 2
    :titlesonly:
+   :maxdepth: 2
 
    aero_overview
    opt_overview
    airfoilopt_overview
 
 Required Software
-================================================================================
+=================
 
-Made in the MDOlab
-------------------
+**Made in the MDOlab**
+
 * `ADflow <https://github.com/mdolab/adflow>`_
 * `pyGeo <https://github.com/mdolab/pygeo>`_
 * `pySpline <https://github.com/mdolab/pyspline>`_
@@ -61,13 +61,13 @@ Made in the MDOlab
 Note: These links take you to the GitHub repositories.
 To see their documentation instead, go back to the main documentation `page <http://mdolab.engin.umich.edu/docs/index.html>`_.
 
-External Software
------------------
-* ICEM CFD
+**External Software**
+
+* ICEM CFD (for surface mesh generation)
 * Tecplot (for visualization)
 
 Documentation strategy
-================================================================================
+======================
 The tutorial resides on `GitHub <https://github.com/mdolab/MACH-Aero-tutorial/>`_, but it is a living tutorial, which means that it is constantly updated with corrections and improvements.
 We invite you, especially as a new user, to take notes of the parts that you find confusing and bring them to the attention of an admin to the tutorial repository so that changes can be made.
 
@@ -83,7 +83,3 @@ We adopt the convention of using ``#rst <section subject>`` as the marker for th
     #rst Simple addition (end)
 
 Please adopt this same convention for any future developments to the tutorial.
-
-Future Work
-================================================================================
-Add explanation of pyOptSparse and OptView.

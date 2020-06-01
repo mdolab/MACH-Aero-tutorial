@@ -1,6 +1,3 @@
-.. centered::
-   :ref:`airfoilopt_singlepoint` | :ref:`intro`
-
 .. _airfoilopt_multipoint:
 
 
@@ -80,9 +77,3 @@ The script can be run in the same way::
 
 	$ mkdir output
 	$ mpirun -np 4 python airfoil_multiopt.py | tee output.txt
-
-
-
-.. centered::
-   :ref:`airfoilopt_singlepoint` | :ref:`intro`
-

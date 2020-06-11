@@ -33,6 +33,7 @@ Table of Contents
    aero_cgnsutils
    aero_adflow
    aero_adflow_polar
+   aero_gridRefinementStudy
 
 Directory Structure
 ===================

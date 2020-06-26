@@ -93,9 +93,9 @@ DVGeo.addGeoDVLocal("local", lower=-0.5, upper=0.5, axis="y", scale=1)
 CFDSolver.setDVGeo(DVGeo)
 # rst dvgeo (end)
 # ======================================================================
-#         DVConstraint Setup
+#         DVConstraint Setup, and Thickness and Volume Constraints
 # ======================================================================
-# rst dvcon (beg)
+# rst dvconVolThick (beg)
 DVCon = DVConstraints()
 DVCon.setDVGeo(DVGeo)
 
@@ -105,18 +105,23 @@ DVCon.setSurface(CFDSolver.getTriangulatedMeshSurface())
 # Volume constraints
 leList = [[0.01, 0, 0.001], [7.51, 0, 13.99]]
 teList = [[4.99, 0, 0.001], [8.99, 0, 13.99]]
-DVCon.addVolumeConstraint(leList, teList, 20, 20, lower=1.0)
+DVCon.addVolumeConstraint(leList, teList, nSpan=20, nChord=20, lower=1.0, scaled=True)
 
 # Thickness constraints
-DVCon.addThicknessConstraints2D(leList, teList, 10, 10, lower=1.0)
-
+DVCon.addThicknessConstraints2D(leList, teList, nSpan=10, nChord=10, lower=1.0, scaled=True)
+# rst dvconVolThick (end)
+# ======================================================================
+#         DVConstraint Setup, and LeTe Constraints
+# ======================================================================
+# rst dvconLeTe (beg)
 # Le/Te constraints
 DVCon.addLeTeConstraints(0, "iLow")
 DVCon.addLeTeConstraints(0, "iHigh")
 
 if comm.rank == 0:
+    # Only make one processor do this
     DVCon.writeTecplot(os.path.join(outputDirectory, "constraints.dat"))
-# rst dvcon (end)
+# rst dvconLeTe (end)
 # ======================================================================
 #         Mesh Warping Set-up
 # ======================================================================
@@ -209,6 +214,7 @@ elif optimizer == "SNOPT":
         "Function precision": 1e-8,
         "Print file": os.path.join(outputDirectory, "SNOPT_print.out"),
         "Summary file": os.path.join(outputDirectory, "SNOPT_summary.out"),
+        'Major iterations limit': 1000,
     }
     opt = OPT("snopt", options=optOptions)
 

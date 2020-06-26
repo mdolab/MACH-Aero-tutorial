@@ -91,22 +91,50 @@ Geometric constraints
 ---------------------
 We can set up constraints on the geometry with the DVConstraints class, also found in the pyGeo module.
 There are several built-in constraint functions within the DVConstraints class, including thickness, surface area, volume, location, and general linear constraints.
-The majority of the constraints are defined based on a triangulated surface representation of the wing obtained from ADflow.
+The majority of the constraints are defined based on a triangulated-surface representation of the wing obtained from ADflow.
 
-The volume and thickness constraints are set up by creating a 2D grid of points which is projected through the planform of the wing (the points must lie completely inside the wing).
-For the volume constraint, the 2D grid is transformed into a 3D grid bounded by the surface of the wing.
-The volume is computed by adding up the volumes of the cells that make up the 3D grid.
-For the thickness constraints, the nodes of the 2D grid are projected to the upper and lower surface of the wing
-The thickness for a given node is the difference between its upper and lower projections.
-More information on the options can be found in the `pyGeo docs <https://mdolab-pygeo.readthedocs-hosted.com/>`_ or by looking at the pyGeo source code.
+.. note:: The triangulated surface is created by ADflow (or DAfoam) using the wall surfaces defined in the CFD volume mesh. The resolution is similar to the CFD surface mesh, and users do not need to provide this triangulated mesh themselves. Optionally, this can also be defined with an external file, see the details `here <https://github.com/mdolab/pygeo/blob/master/pygeo/DVConstraints.py#L200>`_. This is useful if users want to have a different resolution on the triangulated surface (finer or coarser) compared to the CFD mesh, or if DVConstraints is being used without ADflow (or DAfoam).
 
-The LeTe constraints (short for Leading edge/Trailing edge) are linear constraints based on the FFD control points.
-When we have both twist and local shape variables, we want to prevent the local shape variables from creating a shearing twist.
-This is done by constraining that the upper and lower nodes on the leading and trailing edges must move in opposite directions.
+The volume and thickness constraints are set up by creating a uniformly spaced 2D grid of points, which is then projected onto the upper and lower surface of a triangulated-surface representation of the wing.
+The grid is defined by providing four corner points (using ``leList`` and ``teList``) and by specifying the number of spanwise and chordwise points (using ``nSpan`` and ``nChord``).
+
+.. note:: These grid points are projected onto the triangulated surface along the normals of the ruled surface formed by these grid points. Typically, ``leList`` and ``teList`` are given such that the two curves lie in a plane. This ensures that the projection vectors are always exactly normal to this plane. If the surface formed by ``leList`` and ``teList`` is not planar, issues can arise near the end of an open surface (i.e., the root of a wing) which can result in failing intersections.
+
+By default, ``scaled=True`` for ``addVolumeConstraint()`` and ``addThicknessConstraints2D()``, which means that the volume and thicknesses calculated will be scaled by the initial values (i.e., they will be normalized).
+Therefore, ``lower=1.0`` in this example means that the lower limits for these constraints are the initial values (i.e., if ``lower=0.5`` then the lower limits would be half the initial volume and thicknesses).
+
+.. warning:: The ``leList`` and ``teList`` points must lie completely inside the wing.
 
 .. literalinclude:: ../tutorial/opt/aero/aero_opt.py
-    :start-after: # rst dvcon (beg)
-    :end-before: # rst dvcon (end)
+    :start-after: # rst dvconVolThick (beg)
+    :end-before: # rst dvconVolThick (end)
+
+For the volume constraint, the volume is computed by adding up the volumes of the prisms that make up the projected grid as illustrated in the following image (only showing a section for clarity).
+For the thickness constraints, the distances between the upper and lower projected points are used, as illustrated in the following image.
+During optimization, these projected points are also moved by the FFD, just like the wing surface, and are used again to calculate the thicknesses and volume for the new designs.
+More information on the options can be found in the `pyGeo docs <https://mdolab-pygeo.readthedocs-hosted.com/>`_ or by looking at the pyGeo source code.
+
+.. image:: images/opt_thickness_and_vol_diagram.png
+   :scale: 40
+   :align: center
+
+The LeTe constraints (short for Leading edge/Trailing edge constraints) are linear constraints based on the FFD control points.
+When we have both twist and local shape variables, we want to prevent the local shape variables from creating a shearing twist.
+This is done by constraining the upper and lower FFD control points on the leading and trailing edges to move in opposite directions.
+Note that the LeTe constraint is not related to the ``leList`` and ``teList`` points discussed above.
+
+.. literalinclude:: ../tutorial/opt/aero/aero_opt.py
+    :start-after: # rst dvconLeTe (beg)
+    :end-before: # rst dvconLeTe (end)
+
+In this script ``DVCon.writeTecplot`` will save a file named ``constraints.dat`` which can be opened with Tecplot to visualize and check these constraints.
+Since this is added here, before the commands that run the optimization, the file will correspond to the initial geometry.
+The following image shows the constraints visualized with the wing surface superimposed.
+This command can also be added at the end of the script to visualize the final constraints.
+
+.. image:: images/opt_constraints_dat.png
+   :scale: 50
+   :align: center
 
 Mesh warping set-up
 -------------------

@@ -7,10 +7,12 @@ MACH-Aero Tutorials
 Introduction
 ============
 The `MDOlab <http://mdolab.engin.umich.edu>`_ at the University of Michigan has developed the MDO of aircraft configurations with high fidelity (MACH) framework.
-This tutorial was written to help new users become familiar with the tools and workflow of MACH for aerodynamic shape optimization and the common practices of more experienced users.
+This tutorial was written to help new users become familiar with the tools and workflow of MACH for aerodynamic shape optimization and a few common practices of more experienced users.
 Most of the tools in the MACH framework are written with Python, although many of the tools incorporate Fortran code to handle operations that require speed.
 The user does not need to know Fortran to complete this tutorial, but if Python is not your strong suit, we recommend a refresher with one of the many online Python tutorials.
 Be forewarned that ignorance of Python will be cured by any lengthy interaction with the MDOlab. :)
+
+.. warning:: Please view this tutorial as a *bare-minimum* tutorial and not as a comprehensive tutorial. To gain proficiency and flexibility with the MACH tools, it is necessary to explore the dedicated `documentation <http://mdolab.engin.umich.edu/docs/index.html>`_, `source code <https://github.com/mdolab/MACH-Aero>`_, docstrings, and code comments of each tool. 
 
 This tutorial starts from scratch and leads the user through the steps necessary to conduct aerodynamic shape optimization of a B717 wing.
 The tutorial files are located on `GitHub <https://github.com/mdolab/mach_aero_tutorials/>`_.
